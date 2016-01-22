@@ -1,5 +1,3 @@
-'use strict';
-
 // The server port - the port to run Pokemon Showdown under
 exports.port = 8000;
 
@@ -68,7 +66,7 @@ exports.loginserverpublickey = "-----BEGIN RSA PUBLIC KEY-----\n" +
 //   /hidejoins configuration for users.
 //   This feature can lag larger servers - turn this off if your server is
 //   getting more than 80 or so users.
-exports.reportjoins = true;
+exports.reportjoins = false;
 
 // report joins and leaves periodically - sends silent join and leave messages in batches
 //   This setting will only be effective if `reportjoins` is set to false, and users will
@@ -79,7 +77,7 @@ exports.reportjoinsperiod = 0;
 // report battles - shows messages like "OU battle started" in the lobby
 //   This feature can lag larger servers - turn this off if your server is
 //   getting more than 160 or so users.
-exports.reportbattles = true;
+exports.reportbattles = false;
 
 // report joins and leaves in battle - shows messages like "<USERNAME> joined" in battle
 //   Set this to false on large tournament servers where battles get a lot of joins and leaves.
@@ -155,16 +153,6 @@ exports.simulatorprocesses = 1;
 // from the `users` array. The default is 1 hour.
 exports.inactiveuserthreshold = 1000 * 60 * 60;
 
-// tellsexpiryage - how long an offline message remains in existence before being removed.
-// By default, 7 days
-exports.tellsexpiryage = 1000 * 60 * 60 * 24 * 7;
-
-// tellrank - the rank that offline messaging is available to. By default, available to voices
-// and above. Set to ' ' to allow all users to use offline messaging and `false` to disable
-// offline messaging completely. Set to `'autoconfirmed'` to allow only autoconfirmed users
-// to send offline messages.
-exports.tellrank = '+';
-
 // Custom avatars.
 // This allows you to specify custom avatar images for users on your server.
 // Place custom avatar files under the /config/avatars/ directory.
@@ -176,9 +164,6 @@ exports.tellrank = '+';
 exports.customavatars = {
 	//'userid': 'customavatar.png'
 };
-
-// custom avatars appear in profile by specifiying server url.
-exports.avatarurl = '';
 
 // Tournament announcements
 // When tournaments are created in rooms listed below, they will be announced in
@@ -195,7 +180,7 @@ exports.appealurl = '';
 // replsocketprefix - the prefix for the repl sockets to be listening on
 // replsocketmode - the file mode bits to use for the repl sockets
 exports.replsocketprefix = './logs/repl/';
-exports.replsocketmode = 0o600;
+exports.replsocketmode = 0600;
 
 // permissions and groups:
 //   Each entry in `grouplist' is a seperate group. Some of the members are "special"
@@ -252,7 +237,28 @@ exports.grouplist = [
 		id: "admin",
 		name: "Administrator",
 		root: true,
-		globalonly: true,
+		globalonly: true
+	},
+		{
+		symbol: '∆',
+		id: "dev",
+		name: "Developer",
+		globalonly: true
+	},
+		{
+		symbol: '#',
+		id: "owner",
+		roomleader:true,
+		name: "Room Owner",
+		inherit: '@',
+		jurisdiction: 'u',
+		roommod: true,
+		roomdriver: true,
+		editroom: true,
+		declare: true,
+		modchatall: true,
+		roomonly: true,
+		tournamentsmanagement: true
 	},
 	{
 		symbol: '&',
@@ -272,21 +278,10 @@ exports.grouplist = [
 		editroom: true,
 		potd: true,
 		disableladder: true,
-		globalonly: true,
-		tournamentsmanagement: true,
-	},
-	{
-		symbol: '#',
-		id: "owner",
-		name: "Room Owner",
-		inherit: '@',
-		jurisdiction: 'u',
-		roommod: true,
-		roomdriver: true,
-		editroom: true,
-		declare: true,
-		modchatall: true,
-		roomonly: true,
+		globalonly: false,
+		roommod:true,
+		roomdriver:true,
+		roomvoice:true,
 		tournamentsmanagement: true,
 	},
 	{
@@ -298,7 +293,7 @@ exports.grouplist = [
 		modchat: true,
 		roomonly: true,
 		editroom: true,
-		joinbattle: true,
+		joinbattle: true
 	},
 	{
 		symbol: '@',
@@ -309,10 +304,16 @@ exports.grouplist = [
 		ban: true,
 		modchat: true,
 		roomvoice: true,
+		voice:true,
+		roomdriver:true,
+		driver:true,
+		op:true,
+		roomop:true,
 		forcerename: true,
 		ip: true,
 		alts: '@u',
-		tournaments: true,
+		tournamentsmanagement: true,
+		roomdriver:true,
 	},
 	{
 		symbol: '%',
@@ -332,8 +333,19 @@ exports.grouplist = [
 		bypassblocks: 'u%@&~',
 		receiveauthmessages: true,
 		tournamentsmoderation: true,
+		tournamentsmanagement: true,
 		jeopardy: true,
-		joinbattle: true,
+		joinbattle: true
+	},
+	{
+		symbol: '$',
+		id: "op",
+		name: "Operator",
+		jurisdiction: 'u',
+		inherit: '+',
+		warn:true,
+		hourmute:true,
+		mute:true,
 	},
 	{
 		symbol: '+',
@@ -342,9 +354,14 @@ exports.grouplist = [
 		inherit: ' ',
 		alts: 's',
 		broadcast: true,
+		tournaments:true,
+		tournamentsmoderation:true,
+		tournamentsmanagement: true,
 	},
+	
 	{
 		symbol: ' ',
 		ip: 's',
-	},
+		alts: 's'
+	}
 ];
