@@ -250,6 +250,7 @@ exports.commands = {
 	unignorepmshelp: ["/unblockpms - Unblocks private messages. Block them with /blockpms."],
 
 	idle: 'away',
+	anime: 'away',
 	afk: 'away',
 	away: function (target, room, user) {
 		this.parse('/blockchallenges');
