@@ -49,7 +49,7 @@ exports.commands = {
 		}
 
 		newName += ' - ' + status;
-		if (newName.length > 18) return this.sendReply("\"" + target + "\" is too long to use as your away status.");
+		if (newName.length > 32) return this.sendReply("\"" + target + "\" is too long to use as your away status.");
 
 		// forcerename any possible impersonators
 		let targetUser = Users.getExact(user.userid + target);
