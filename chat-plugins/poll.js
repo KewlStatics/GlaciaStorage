@@ -179,7 +179,7 @@ exports.commands = {
 			this.logEntry("" + user.name + " used " + message);
 			return this.privateModCommand("(A poll was started by " + user.name + ".)");
 		},
-		newhelp: ["/poll create [question], [option1], [option2], [...] - Creates a poll. Requires: % @ # & ~"],
+		newhelp: ["/poll create [question], [option1], [option2], [...] - Creates a poll. Requires: + $ % @ # & ~"],
 
 		vote: function (target, room, user) {
 			if (!room.poll) return this.errorReply("There is no poll running in this room.");
@@ -230,7 +230,7 @@ exports.commands = {
 				}
 			}
 		},
-		timerhelp: ["/poll timer [minutes] - Sets the poll to automatically end after [minutes] minutes. Requires: % @ # & ~", "/poll timer clear - Clears the poll's timer. Requires: % @ # & ~"],
+		timerhelp: ["/poll timer [minutes] - Sets the poll to automatically end after [minutes] minutes. Requires: + $ % @ # & ~", "/poll timer clear - Clears the poll's timer. Requires: % @ # & ~"],
 
 		results: function (target, room, user) {
 			if (!room.poll) return this.errorReply("There is no poll running in this room.");
@@ -251,7 +251,7 @@ exports.commands = {
 			delete room.poll;
 			return this.privateModCommand("(The poll was ended by " + user.name + ".)");
 		},
-		endhelp: ["/poll end - Ends a poll and displays the results. Requires: % @ # & ~"],
+		endhelp: ["/poll end - Ends a poll and displays the results. Requires: + $ % @ # & ~"],
 
 		show: 'display',
 		display: function (target, room, user, connection) {
