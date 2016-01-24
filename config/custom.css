@@ -7,3 +7,18 @@
 #lobby-userlist-user-youngfabio, #staff-userlist-user-youngfabio, #wifi-userlist-user-youngfabio, #luxmusic-userlist-user-youngfabio, #smashbros-userlist-user-youngfabio, #gamescorner-userlist-user-youngfabio, #roleplaying-userlist-user-youngfabio, #thegenesisleaguee-userlist-user-youngfabio, #theunityleague-userlist-user-youngfabio, #thefadedleague-userlist-user-youngfabio, #adl-userlist-user-youngfabio {
     background:url("http://pokedream.com/pokedex/images/mini/179.gif") no-repeat right
 }    
+body {
+    background: url(http://i.imgur.com/fXpbbNp.gif?1) no-repeat;
+    background-color: #99ccff;
+  }
+
+.header .logo {
+    float: left;
+    margin: 8px 0px 0px -148px;
+    padding-right: 200px;
+    padding-bottom: 5px;
+  }
+
+.header{
+    background:#FFCC66 url("http://i.imgur.com/7ukbPVy.png") no-repeat;
+}
