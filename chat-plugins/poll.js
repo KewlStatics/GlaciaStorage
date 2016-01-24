@@ -301,7 +301,7 @@ exports.commands = {
 
 	},
 	tierpoll: function(target, room, user) {
-		var tiers = ['Anything Goes', 'Challenge Cup 1v1', 'Monotype', 'Ubers','Overused', 'Underused','Rarelyused','Neverused','Pu' ,'Random Battles','Catch And Evolve', '0MM', ];
+		var tiers = ['Anything Goes', 'Challenge Cup 1v1', 'Monotype', 'Overused', 'Random Battles','Catch And Evolve' ];
 		this.parse('/poll new Next Tour?, ' + tiers);
      	},
        leaguepoll: function(target, room, user) {
