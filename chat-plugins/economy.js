@@ -14,7 +14,7 @@ let shop = [
 	['TC', 'Buys a trainer card which shows information through a command. (You supply the coding, can be refused)', 40],
 	['Staff Help', 'Staff member will help set up roomintros and anything else needed in a room. Response may not be immediate.', 50],
 	['Emotes', 'Buys an emote to add to the emote poll, (You supply. Images must be 50x50 and can be refused if deemed wildly inappropiate.', 65],
-	['Userlist Icon', 'Buys a pokemon icon to accompany your name in the userlist for the lobby. (send the name of the pokemon you wish for it be to a member of staff, may take some time to process)', 100],
+	['Userlist Icon', 'Buys a pokemon icon to accompany your name in the userlist for the lobby. (send the name of the pokemon you wish for it be to a member of staff, may take some time to process)', 125],
 ];
 
 let shopDisplay = getShopDisplay(shop);
