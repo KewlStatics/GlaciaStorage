@@ -1,0 +1,29 @@
+#lobby-userlist-user-kokonoesan, #staff-userlist-user-kokonoesan, #wifi-userlist-user-kokonoesan, #luxmusic-userlist-user-kokonoesan, #theunityleague-userlist-user-kokonoesan, #gamescorner-userlist-user-kokonoesan, #roleplaying-userlist-user-kokonoesan, #thegenesisleague-userlist-user-kokonoesan, #thefadedleague-userlist-user-kokonoesan, #adl-userlist-user-kokonoesan {
+    background:url("http://orig12.deviantart.net/c0ef/f/2015/254/d/d/mega_ampharos_icon_by_commander_f-d995ws4.gif") no-repeat right
+}    
+#lobby-userlist-user-lmaoitsbt, #shadowbanroom-userlist-user-lmaoitsbt, #staff-userlist-user-lmaoitsbt {
+    background:url("http://pldh.net/media/pokecons_action/385.gif") no-repeat right
+}    
+#lobby-userlist-user-youngfabio, #staff-userlist-user-youngfabio, #wifi-userlist-user-youngfabio, #luxmusic-userlist-user-youngfabio, #smashbros-userlist-user-youngfabio, #gamescorner-userlist-user-youngfabio, #roleplaying-userlist-user-youngfabio, #thegenesisleaguee-userlist-user-youngfabio, #theunityleague-userlist-user-youngfabio, #thefadedleague-userlist-user-youngfabio, #adl-userlist-user-youngfabio {
+    background:url("http://pokedream.com/pokedex/images/mini/179.gif") no-repeat right
+}    
+body {
+    background: url(http://i.imgur.com/EMtmL23.png) no-repeat;
+    background-color: #99ccff;
+  }
+
+.header .logo {
+    float: left;
+    margin: 8px 0px 0px -148px;
+    padding-right: 200px;
+    padding-bottom: 5px;
+  }
+
+.header{
+    background:#99ccff url("http://i.imgur.com/7ukbPVy.png") no-repeat;
+}
+
+.nightclub {
+	background:#000000;
+	margin:-3px
+}
