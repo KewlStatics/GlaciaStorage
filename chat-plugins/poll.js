@@ -301,7 +301,7 @@ exports.commands = {
 
 	},
 	tourpoll: function(target, room, user) {
-		var tiers = ['Anything Goes', 'Battle Factory', 'LC', 'Monotype', 'OU', 'VGC 2016'];
+		var tiers = ['Anything Goes', 'Battle Factory', 'C&E', 'LC', 'Monotype', 'OU', 'VGC 2016'];
 		this.parse('/poll new Next Tournament?, ' + tiers);
      	},
        leaguepoll: function(target, room, user) {
