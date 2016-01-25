@@ -301,11 +301,11 @@ exports.commands = {
 
 	},
 	tierpoll: function(target, room, user) {
-		var tiers = ['Anything Goes', 'Challenge Cup 1v1', 'Monotype', 'Overused', 'Random Battles','Catch And Evolve' ];
+		var tiers = ['Anything Goes', 'Battle Factory', 'LC', 'Monotype', 'OU', 'VGC 2016'];
 		this.parse('/poll new Next Tour?, ' + tiers);
      	},
        leaguepoll: function(target, room, user) {
-		var tiers = ['Monotype', 'Random Monotype', 'Challenge Cup 1v1', 'Eights', 'Tierpoll'];
+		var tiers = ['Monotype', 'Challenge Cup 1v1', 'Eights'];
 		this.parse('/poll new League tournament?, ' + tiers);
 	},
 
