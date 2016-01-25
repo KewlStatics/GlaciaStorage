@@ -295,7 +295,31 @@ exports.commands = {
 		});
 	},
 
+	richestusers: 'richestuser',
+	richestuser: function(target, room, user) {
+	 	if (!target) var target = 10;
+	 	target = Number(target);
+	 	if (isNaN(target)) target = 10;
+	 	if (!this.canBroadcast()) return;
+	 	if (this.broadcasting && target > 10) target = 10; // limit to 10 while broadcasting
+	 	if (target > 500) target = 500;
+	 	var self = this;
 
+	 	function showResults(rows) {
+			var output = '<table border="1" cellspacing ="0" cellpadding="3"><tr><th>Rank</th><th>Name</th><th>Bucks</th></tr>';
+			var count = 1;
+			for (var u in rows) {
+				if (rows[u].name !== null) {
+					var username = rows[u].name;
+				} else {
+					var username = rows[u].userid;
+				}
+				output += '<tr><td>' + count + '</td><td>' + Tools.escapeHTML(username) + '</td><td>' + rows[u].bucks + '</td></tr>';
+				count++;
+			}
+			self.sendReplyBox(output);
+			room.update();
+		}
 
 	dicegame: 'startdice',
 	dicestart: 'startdice',
