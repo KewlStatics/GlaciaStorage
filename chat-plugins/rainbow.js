@@ -21,6 +21,6 @@ exports.commands = {
                                 room.add('|raw|<small>' + user.group + '</small><b>' + userColor + '</b>: ' + target);
                         }
           }
-          else return this.errorReply('You must be voiced to use this command.');
+          else return this.errorReply('You must be a legit boss to use this command.');
   },
         };
