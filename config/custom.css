@@ -1,0 +1,167 @@
+body {
+    background: url("https://i.gyazo.com/b62eeb4bdf6c3b5bf73988ab3ccef8bd.png") no-repeat;
+    background-color: #A9ABBD;
+  }
+
+.header .logo {
+    float: left;
+    margin: 8px 0px 0px -148px;
+    padding-right: 200px;
+    padding-bottom: 5px;
+  }
+
+.header{
+    background:#b3ffff url("http://i.imgur.com/7ukbPVy.png") no-repeat;
+}
+
+.nightclub {
+	background:#000000;
+	margin:-3px
+}
+
+.userlist{
+    background:#b3ffff;
+}
+
+.chat-log {
+    background: #e5ffff url("http://vignette2.wikia.nocookie.net/pokemon/images/a/a9/471Glaceon_Dream.png/revision/latest?cb=20140315222609") top right no-repeat;
+    border-bottom: 1px solid #1affff;
+    border-left: 1px solid #1affff;
+}
+
+.pm-log{
+    background:#e5ffff;
+}
+
+.pm-window h3{
+    background: #ccffff url("http://pldh.net/media/pokecons_action/471.gif") bottom right no-repeat;
+    background-position: 200px;
+    color:#00ffff;
+}
+
+.pm-window h3:hover {
+    color:#ccffff;
+    background: #ffffff ;
+  }
+
+.pm-window.focused h3, .pm-window.focused h3:hover {
+	background: #b3ffff url("http://pldh.net/media/pokecons_action/471.gif") bottom right no-repeat;
+    background-position: 200px;
+	color:#00b2b3;
+}
+
+.pm-log-add{
+    background:#ccffff ;
+}
+
+.tabbar a.button.cur, .tabbar a.button.cur:hover {
+    background: #ccffff;
+      border-color:#ffffff;
+    color: #000;
+  }
+
+.tabbar a.button {
+    background:#ccffff;
+    color:#000;
+    border-color:#ffffff;
+}
+
+.maintabbarbottom {
+    background: #ffffff;
+    border-color:#ccffff;
+  }
+
+.teamlist{
+    background:#99ffff;
+}
+
+.pad{
+    background:#ccffff;
+}
+
+.team{
+    background:#33ffff;
+    color:#ccffff;
+}
+
+.teamchart{
+    background:#80ffff;
+}
+
+.teamchart, .teamchart li{
+    background:#ccffff;
+}
+
+.battle-log{
+    background:#e5ffff;
+}
+
+.ps-room{
+     background:url("https://i.gyazo.com/b62eeb4bdf6c3b5bf73988ab3ccef8bd.png");
+}
+
+.ps-room.ps-room-opaque{
+    background:url("https://i.gyazo.com/b62eeb4bdf6c3b5bf73988ab3ccef8bd.png");
+}
+
+.ps-room .battle-controls{
+    background:#ccffff;
+}
+
+.battle-log h2{
+    background:white;
+    color:#80ffff;
+}
+
+.ps-room .battle-log-add{
+    background:#ccffff;
+}
+
+.rightbar, .leftbar{
+    background:#ccffff;
+    color:white;
+}
+
+.ps-popup{
+    background:#e5ffff;
+}
+  
+ .chat-log-add{
+    background:#ccffff;
+  }
+
+.mainmenufooter a {
+    color: #000000;
+    text-shadow: 0px 0px 1px #ccffff, 0px 0px 1px #ccffff, 0px 0px 1px #ccffff;
+}
+
+.mainmenufooter a:hover {
+    color: #009999;
+}
+
+.menugroup .button {
+    background: #ccffff;
+        box-sizing: border-box;
+    font-size: 10pt;
+    font-family: Verdana,Helvetica,Arial,sans-serif;
+    display: inline-block;
+    padding: 5px 7px 3px;
+    width: 200px;
+    outline: medium none;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    text-shadow: 0px -1px 0px #0F1923;
+    border-radius: 5px;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2), 0px 1px 1px rgba(255, 255, 255, 0.8) inset;
+    color: #474747;
+    border: 3px solid #474747;
+}
+  
+.menugroup button.big {
+    font-size: 12pt;
+  }
+  
+.menugroup .button:hover {
+    background: #99ffff;
+  }
