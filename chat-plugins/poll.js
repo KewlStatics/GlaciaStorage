@@ -296,13 +296,13 @@ exports.commands = {
 		this.parse('/poll end');
 	},
 	oraspoll: function(target, room, user) {
-		var tiers = ['Random Battle', 'OU', 'Ubers', 'UU', 'RU', 'NU', 'LC', 'Anything Goes', 'Battle Spot Singles'];
+		var tiers = ['OU', 'Ubers', 'UU', 'RU', 'NU', 'LC', 'Anything Goes', 'Battle Spot Singles'];
 		this.parse('/poll new ORAS Single tier?, ' + tiers);
 
 	},
-	tierpoll: function(target, room, user) {
+	tourpoll: function(target, room, user) {
 		var tiers = ['Anything Goes', 'Battle Factory', 'LC', 'Monotype', 'OU', 'VGC 2016'];
-		this.parse('/poll new Next Tour?, ' + tiers);
+		this.parse('/poll new Next Tournament?, ' + tiers);
      	},
        leaguepoll: function(target, room, user) {
 		var tiers = ['Monotype', 'Challenge Cup 1v1', 'Eights'];
