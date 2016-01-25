@@ -295,13 +295,13 @@ exports.commands = {
 	endpoll: function(target, room, user) {
 		this.parse('/poll end');
 	},
-	oraspoll: function(target, room, user) {
+	wifipoll: function(target, room, user) {
 		var tiers = ['OU', 'Ubers', 'UU', 'RU', 'NU', 'LC', 'Anything Goes', 'Battle Spot Singles'];
 		this.parse('/poll new ORAS Single tier?, ' + tiers);
 
 	},
 	tourpoll: function(target, room, user) {
-		var tiers = ['Anything Goes', 'Battle Factory', 'C&E', 'LC', 'Monotype', 'OU', 'VGC 2016'];
+		var tiers = ['Anything Goes', 'Battle Factory', 'C&E', , 'CC 1V1', 'LC', 'Monotype', 'OU', 'VGC 2016'];
 		this.parse('/poll new Next Tournament?, ' + tiers);
      	},
        leaguepoll: function(target, room, user) {
