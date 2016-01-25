@@ -36,7 +36,7 @@ body {
 .pm-window h3{
     background: #ccffff url("http://pldh.net/media/pokecons_action/471.gif") bottom right no-repeat;
     background-position: 200px;
-    color:#00ffff;
+    color:#006666;
 }
 
 .pm-window h3:hover {
@@ -47,7 +47,7 @@ body {
 .pm-window.focused h3, .pm-window.focused h3:hover {
 	background: #b3ffff url("http://pldh.net/media/pokecons_action/471.gif") bottom right no-repeat;
     background-position: 200px;
-	color:#00b2b3;
+	color:#006666;
 }
 
 .pm-log-add{
@@ -67,7 +67,7 @@ body {
 }
 
 .maintabbarbottom {
-    background: #ffffff;
+    background: #ccffff;
     border-color:#ccffff;
   }
 
