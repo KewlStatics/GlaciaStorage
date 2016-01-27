@@ -6,6 +6,7 @@ exports.parseEmoticons = parseEmoticons;
 
 let emotes = {
 	'#freewolf': 'http://i.imgur.com/ybxWXiG.png',
+	'focus': 'http://i.imgur.com/dUN6xWl.gif',
 	'feelsbd': 'http://i.imgur.com/YyEdmwX.png',
 	'feelsbm': 'http://i.imgur.com/xwfJb2z.png',
 	'feelsbn': 'http://i.imgur.com/wp51rIg.png',
