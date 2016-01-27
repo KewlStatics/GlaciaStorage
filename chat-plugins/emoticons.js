@@ -6,7 +6,6 @@ exports.parseEmoticons = parseEmoticons;
 
 let emotes = {
 	'#freewolf': 'http://i.imgur.com/ybxWXiG.png',
-	'focus': 'http://i.imgur.com/dUN6xWl.gif',
 	'feelsbd': 'http://i.imgur.com/YyEdmwX.png',
 	'feelsbm': 'http://i.imgur.com/xwfJb2z.png',
 	'feelsbn': 'http://i.imgur.com/wp51rIg.png',
@@ -27,6 +26,7 @@ let emotes = {
 	'feelsrs': 'http://i.imgur.com/qGEot0R.png',
 	'feelssc': 'http://i.imgur.com/cm6oTZ1.png',
 	'feelstea': 'http://i.imgur.com/7zT8cpz.png',
+	'focus': 'http://i.imgur.com/dUN6xWl.gif',
 	'fukya': 'http://i.imgur.com/ampqCZi.gif',
 	'funnylol': 'http://i.imgur.com/SlzCghq.png',
 	'hmmface': 'http://i.imgur.com/Z5lOwfZ.png',
@@ -34,6 +34,7 @@ let emotes = {
 	'Obama': 'http://i.imgur.com/rBA9M7A.png',
 	'oshet': 'http://i.imgur.com/yr5DjuZ.png',
 	'Sanic': 'http://i.imgur.com/Y6etmna.png',
+	'welldone': 'http://i.imgur.com/DfKT8GL.gif'
 	'wtfman': 'http://i.imgur.com/kwR8Re9.png',
 	'xaa': 'http://i.imgur.com/V728AvL.png',
 	'yayface': 'http://i.imgur.com/anY1jf8.png',
