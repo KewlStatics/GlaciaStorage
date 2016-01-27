@@ -34,7 +34,7 @@ let emotes = {
 	'Obama': 'http://i.imgur.com/rBA9M7A.png',
 	'oshet': 'http://i.imgur.com/yr5DjuZ.png',
 	'Sanic': 'http://i.imgur.com/Y6etmna.png',
-	'welldone': 'http://i.imgur.com/DfKT8GL.gif'
+	'welldone': 'http://i.imgur.com/DfKT8GL.gif',
 	'wtfman': 'http://i.imgur.com/kwR8Re9.png',
 	'xaa': 'http://i.imgur.com/V728AvL.png',
 	'yayface': 'http://i.imgur.com/anY1jf8.png',
