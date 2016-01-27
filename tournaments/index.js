@@ -1113,68 +1113,6 @@ CommandParser.commands.tournament = function (paramString, room, user) {
 		}
 	}
 };
-
-    remind: function(target, room, user, connection) {
-        if (!this.canTalk()) return;
-        if (!this.can('broadcast')) return this.sendReply('/remind - Access denied.');
-        if (room.decision) return this.sendReply('Prof. Oak: There is a time and place for everything! You cannot do this in battle rooms.');
-        if (tour[room.id] == undefined || !tour[room.id].status) return this.sendReply('There is no active tournament in this room.');
-        if (tour[room.id].status == 1) {
-            var remslots = tour[room.id].size - tour[room.id].players.length;
-            tour.reportdue(room, connection);
-            room.addRaw('<hr /><h2><font color="green">Please sign up for the ' + Tools.data.Formats[tour[room.id].tier].name + ' Tournament.</font> <font color="red">/j</font> <font color="green">to join!</font></h2><b><font color="blueviolet">PLAYERS:</font></b> ' + (isFinite(tour[room.id].size) ? tour[room.id].size : 'UNLIMITED') + '<br /><font color="blue"><b>TIER:</b></font> ' + Tools.data.Formats[tour[room.id].tier].name + '<br /><font color="gray"><i>Tour remind by '+user.name+'</i></font><br /><hr />');
-        } else {
-            var c = tour[room.id];
-            var unfound = [];
-            if (!target) {
-                for (var x in c.round) {
-                    if (c.round[x][0] && c.round[x][1] && !c.round[x][2]) {
-                        var userOne = Users.get(c.round[x][0]);
-                        var userTwo = Users.get(c.round[x][1]);
-                        if (userOne) {
-                            userOne.popup("**HEY!** Remember that you have a pending tournament battle in the room " + room.title + ". Unless you start soon your battle against " + tour.username(c.round[x][1]) + " in the tier " + Tools.data.Formats[tour[room.id].tier].name + ", you could lose by W.O.");
-                        } else {
-                            unfound.push(c.round[x][0]);
-                        }
-                        if (userTwo) {
-                            userTwo.popup("**HEY!** Remember that you have a pending tournament battle in the room " + room.title + ". Unless you start soon your battle against " + tour.username(c.round[x][0]) + " in the tier " + Tools.data.Formats[tour[room.id].tier].name + ", you could lose by W.O.");
-                        } else {
-                            unfound.push(c.round[x][1]);
-                        }
-                    }
-                }
-            } else {
-                var opponent = '';
-                var targets = tour.splint(target);
-                for (var i=0; i<targets.length; i++) {
-                    var nicetarget = false;
-                    var someuser = Users.get(targets[i]);
-                    if (someuser) {
-                        for (var x in c.round) {
-                            if (c.round[x][0] && c.round[x][1] && !c.round[x][2]) {
-                                if (c.round[x][0] === someuser.userid) {
-                                    nicetarget = true;
-                                    opponent = c.round[x][1];
-                                    break;
-                                } else if (c.round[x][1] === someuser.userid) {
-                                    nicetarget = true;
-                                    opponent = c.round[x][0];
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                    if (nicetarget) {
-                        someuser.popup("Remember that you have a pending tournament battle in the room " + room.title + ". Unless you start soon your battle against " + tour.username(opponent) + "in the tier " + Tools.data.Formats[tour[room.id].tier].name + ", you could lose by W.O.");
-                    } else {
-                        unfound.push(someuser.name);
-                    }
-                }
-            }
-            room.addRaw("Users with pending battles in the tournament were reminded of it by " + user.name + '.');
-            if (unfound.length) return this.sendReply("The following users are offline or lack pending battles: " + unfound.toString());
-        }
-    },
 CommandParser.commands.tournamenthelp = function (target, room, user) {
 	if (!this.canBroadcast()) return;
 	return this.sendReplyBox(
