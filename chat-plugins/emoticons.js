@@ -5,6 +5,7 @@ let color = require('../config/color');
 exports.parseEmoticons = parseEmoticons;
 
 let emotes = {
+	'bomaye': 'http://i.imgur.com/cuDGGJW.gif',
 	'#freewolf': 'http://i.imgur.com/ybxWXiG.png',
 	'feelsbd': 'http://i.imgur.com/YyEdmwX.png',
 	'feelsbm': 'http://i.imgur.com/xwfJb2z.png',
@@ -23,6 +24,7 @@ let emotes = {
 	'feelspn': 'http://i.imgur.com/wSSM6Zk.png',
 	'feelspr': 'http://i.imgur.com/3VtkKfJ.png',
 	'feelsrg': 'http://i.imgur.com/DsRQCsI.png',
+	'feelsrose': 'http://i.imgur.com/MIzzQUd.png',
 	'feelsrs': 'http://i.imgur.com/qGEot0R.png',
 	'feelssc': 'http://i.imgur.com/cm6oTZ1.png',
 	'feelstea': 'http://i.imgur.com/7zT8cpz.png',
@@ -30,6 +32,7 @@ let emotes = {
 	'fukya': 'http://i.imgur.com/ampqCZi.gif',
 	'funnylol': 'http://i.imgur.com/SlzCghq.png',
 	'hmmface': 'http://i.imgur.com/Z5lOwfZ.png',
+	'likeaboss': 'http://i.imgur.com/3YpxPGV.gif',
 	'noface': 'http://i.imgur.com/H744eRE.png',
 	'Obama': 'http://i.imgur.com/rBA9M7A.png',
 	'oshet': 'http://i.imgur.com/yr5DjuZ.png',
