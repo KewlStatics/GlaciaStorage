@@ -305,7 +305,7 @@ exports.commands = {
 			return {name: name, money: Db('money').get(name)};
 		});
 		if (!keys.length) return this.sendReplyBox("Money ladder is empty.");
-		keys.sort(function (b, a) { return b.money > a.money; });
+		keys.sort(function (a, b) { return a.money > b.money; });
 		keys.slice(0, 10).forEach(function (user, index) {
 			display += "<tr><td>" + (index + 1) + "</td><td>" + user.name + "</td><td>" + user.money + "</td></tr>";
 		});
