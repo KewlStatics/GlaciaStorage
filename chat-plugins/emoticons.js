@@ -5,8 +5,8 @@ let color = require('../config/color');
 exports.parseEmoticons = parseEmoticons;
 
 let emotes = {
-	'bomaye': 'http://i.imgur.com/cuDGGJW.gif',
 	'#freewolf': 'http://i.imgur.com/ybxWXiG.png',
+	'bomaye': 'http://i.imgur.com/cuDGGJW.gif',
 	'feelsbd': 'http://i.imgur.com/YyEdmwX.png',
 	'feelsbm': 'http://i.imgur.com/xwfJb2z.png',
 	'feelsbn': 'http://i.imgur.com/wp51rIg.png',
@@ -27,7 +27,7 @@ let emotes = {
 	'feelsrose': 'http://i.imgur.com/MIzzQUd.png',
 	'feelsrs': 'http://i.imgur.com/qGEot0R.png',
 	'feelssc': 'http://i.imgur.com/cm6oTZ1.png',
-	'feelstea': 'http://i.imgur.com/7zT8cpz.png',
+	'feelstea': 'http://i.imgur.com/XQc8yZ2.gif',
 	'focus': 'http://i.imgur.com/dUN6xWl.gif',
 	'fukya': 'http://i.imgur.com/ampqCZi.gif',
 	'funnylol': 'http://i.imgur.com/SlzCghq.png',
