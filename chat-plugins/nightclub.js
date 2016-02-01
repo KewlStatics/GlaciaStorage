@@ -51,12 +51,12 @@ exports.commands = {
 		if (!this.can('roommod', null, room)) return false;
 		if (nightclub[room.id]) return this.sendReply('This room is already engulfed in nightclubness.');
 		nightclub[room.id] = true;
-		room.addRaw('<div class="nightclub"><font size=6>' + nightclubify('IDM We in dis!') + '</font><font size="2"> started by: ' + user.userid + '</font></div>');
+		room.addRaw('<div class="nightclub"><font size=6>' + nightclubify('Feel the power!') + '</font><font size="2"> started by: ' + user.userid + '</font></div>');
 	},
 	dayclub: function(target, room, user, connection) {
 		if (!this.can('roommod', null, room)) return false;
 		if (!nightclub[room.id]) return this.sendReply('This room is already in broad daylight.');
 		delete nightclub[room.id];
-		room.addRaw('<div class="nightclub"><font size=6>' + nightclubify('IDM We out dis!') + '</font><font size="2"> ended by: ' + user.userid + '</font></font>');
+		room.addRaw('<div class="nightclub"><font size=6>' + nightclubify('This is booty...') + '</font><font size="2"> ended by: ' + user.userid + '</font></font>');
 	},
 }
