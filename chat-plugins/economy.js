@@ -313,7 +313,7 @@ exports.commands = {
 		});
 		display += "</tbody></table>";
 		this.sendReply("|raw|" + display);
-
+	},
 	dicegame: 'startdice',
 	dicestart: 'startdice',
 	startdice: function (target, room, user) {
