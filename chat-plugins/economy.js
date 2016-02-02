@@ -300,12 +300,14 @@ exports.commands = {
 	richestusers: 'richestuser',
 	richestuser: function (target, room, user) {
 		if (!this.canBroadcast()) return;
-		let display = '<center><u><b>Richest Users</b></u></center><br><table border="1" cellspacing="0" cellpadding="5" width="100%"><tbody><tr><th>Rank</th><th>Username</th><th>Money</th></tr>';
-		let keys = Object.keys(Db('money').object()).map(function (name) {
-			return {name: name, money: Db('money').get(name)};
+		var display = '<center><u><b>Richest Users</b></u></center><br><table border="1" cellspacing="0" cellpadding="5" width="100%"><tbody><tr><th>Rank</th><th>Username</th><th>Money</th></tr>';
+		var keys = Object.keys(Db('money')).map(function (name) {
+			return {name: name, money: Db('money')[name]};
 		});
 		if (!keys.length) return this.sendReplyBox("Money ladder is empty.");
-		keys.sort(function (a, b) { return a.money > b.money; });
+		keys.sort(function (a, b) {
+			return b.money - a.money;
+		});
 		keys.slice(0, 10).forEach(function (user, index) {
 			display += "<tr><td>" + (index + 1) + "</td><td>" + user.name + "</td><td>" + user.money + "</td></tr>";
 		});
