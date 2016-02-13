@@ -243,7 +243,13 @@ exports.grouplist = [
 		symbol: '∆',
 		id: "dev",
 		name: "Developer",
-		globalonly: true
+		globalonly: true,
+		mute: true,
+		lock: true,
+		warn: true,
+		broadcast: true,
+		tournamentsmoderation: true,
+		tournamentsmanagement: true
 	},
 		{
 		symbol: '#',
@@ -260,6 +266,32 @@ exports.grouplist = [
 		roomonly: true,
 		tournamentsmanagement: true
 	},
+	{
+		symbol: '♅',
+		id: "leadré",
+		name: "Leadré",
+		inherit: '@',
+		jurisdiction: '@u',
+		promote: 'u',
+		roomowner: true,
+		roommod: true,
+		roomdriver: true,
+		forcewin: true,
+		declare: true,
+		modchatall: true,
+		rangeban: true,
+		makeroom: true,
+		editroom: true,
+		potd: true,
+		disableladder: true,
+		globalonly: false,
+		roommod:true,
+		roomdriver:true,
+		roomvoice:true,
+		tournamentsmanagement: true,
+		ip:false
+	},
+
 	{
 		symbol: '&',
 		id: "leader",
