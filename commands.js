@@ -862,11 +862,13 @@ exports.commands = {
 		let targetUsername = (targetUser ? targetUser.name : target);
 
 		let buffer = [];
+		if (room.founder) buffer.push('Room Founder:\n' + room.founder);
 		let innerBuffer = [];
 		let group = Users.usergroups[targetId];
 		if (group) {
 			buffer.push('Global auth: ' + group.charAt(0));
 		}
+	
 		for (let i = 0; i < Rooms.global.chatRooms.length; i++) {
 			let curRoom = Rooms.global.chatRooms[i];
 			if (!curRoom.auth || curRoom.isPrivate) continue;
