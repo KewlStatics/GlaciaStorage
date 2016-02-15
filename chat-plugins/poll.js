@@ -295,9 +295,9 @@ exports.commands = {
 	endpoll: function(target, room, user) {
 		this.parse('/poll end');
 	},
-	wifipoll: function(target, room, user) {
-		var tiers = ['OU', 'Ubers', 'UU', 'RU', 'NU', 'LC', 'Anything Goes', 'Battle Spot Singles'];
-		this.parse('/poll new ORAS Single tier?, ' + tiers);
+	ffapoll: function(target, room, user) {
+		var tiers = ['Ubers', 'OU with 1 Uber', 'OU', 'UU/RU', 'NU/PU', 'LC'];
+		this.parse('/poll new FFA Format?, ' + tiers);
 
 	},
 	tourpoll: function(target, room, user) {
