@@ -10,6 +10,7 @@ let emotes = {
 	'feelsbd': 'http://i.imgur.com/YyEdmwX.png',
 	'feelsbm': 'http://i.imgur.com/xwfJb2z.png',
 	'feelsbn': 'http://i.imgur.com/wp51rIg.png',
+	'feelscri':'http://i.imgur.com/JEMjW4f.jpg',
 	'feelsdd': 'http://i.imgur.com/fXtdLtV.png',
 	'feelsdoge': 'http://i.imgur.com/GklYWvi.png',
 	'feelsdrake': 'http://i.imgur.com/LiIJ7Sf.gif',
@@ -32,9 +33,7 @@ let emotes = {
 	'fukya': 'http://i.imgur.com/ampqCZi.gif',
 	'funnylol': 'http://i.imgur.com/SlzCghq.png',
 	'hmmface': 'http://i.imgur.com/Z5lOwfZ.png',
-	'likeaboss': 'http://i.imgur.com/3YpxPGV.gif',
 	'noface': 'http://i.imgur.com/H744eRE.png',
-	'Obama': 'http://i.imgur.com/rBA9M7A.png',
 	'oshet': 'http://i.imgur.com/yr5DjuZ.png',
 	'Sanic': 'http://i.imgur.com/Y6etmna.png',
 	'welldone': 'http://i.imgur.com/DfKT8GL.gif',
@@ -42,6 +41,7 @@ let emotes = {
 	'xaa': 'http://i.imgur.com/V728AvL.png',
 	'yayface': 'http://i.imgur.com/anY1jf8.png',
 	'yesface': 'http://i.imgur.com/k9YCF6K.png',
+	'yousee': 'http://i.imgur.com/fjFRa6m.gif',
 };
 
 let emotesKeys = Object.keys(emotes);
