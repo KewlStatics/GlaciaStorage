@@ -304,7 +304,7 @@ exports.grouplist = [
 		roomdriver: true,
 		forcewin: true,
 		declare: true,
-		modchatall: true,
+		modchatall: false,
 		rangeban: true,
 		makeroom: true,
 		editroom: true,
