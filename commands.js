@@ -120,7 +120,7 @@ exports.commands = {
 	},
 	replyhelp: ["/reply OR /r [message] - Send a private message to the last person you received a message from, or sent a message to."],
 
-	pm: 'msg',
+	        pm: 'msg',
 	whisper: 'msg',
 	w: 'msg',
 	msg: function (target, room, user, connection) {
@@ -218,7 +218,13 @@ exports.commands = {
 		let message = '|pm|' + user.getIdentity() + '|' + targetUser.getIdentity() + '|' + target;
 
 		user.send(message);
-		if (targetUser !== user) targetUser.send(message);
+		if (targetUser !== user) {
+ 	         	if (Users.ShadowBan.checkBanned(user)) {
+ 			        Users.ShadowBan.addMessage(user, "Private to " + targetUser.getIdentity(), target);
+ 		        } else {
+ 				targetUser.send(message);
+ 			}
+ 		}
 		targetUser.lastPM = user.userid;
 		user.lastPM = targetUser.userid;
 	},
