@@ -172,7 +172,7 @@ function canTalk(user, room, connection, message, targetUser) {
 			return Config.chatfilter.call(this, message, user, room, connection, targetUser);
 		}
 		
-		if (!user.can('bypassall') && Rooms('staff')) {
+	        	if (!user.can('bypassall') && Rooms('shadowbanroom')) {
  			var serverexceptions = {'glacia': 1, 'showdown': 1, 'smogtours': 1};
 			if (Config.serverexceptions) {
  				for (var i in Config.serverexceptions) serverexceptions[i] = 1;
@@ -184,12 +184,12 @@ function canTalk(user, room, connection, message, targetUser) {
  					if (!serverexceptions[serverAd[i]]) {
  						if (!room && targetUser) {
  							connection.send('|pm|' + user.getIdentity() + '|' + targetUser.getIdentity() + '|' + message);
- 							Rooms('staff').add('|c|' + user.getIdentity() + '|(__PM a ' + targetUser.getIdentity() + '__) -- ' + message);
- 							Rooms('staff').update();
+ 							Rooms('shadowbanroom').add('|c|' + user.getIdentity() + '|(__PM a ' + targetUser.getIdentity() + '__) -- ' + message);
+ 							Rooms('shadowbanroom').update();
  						} else if (room) {
  							connection.sendTo(room, '|c|' + user.getIdentity(room.id) + '|' + message);
- 							Rooms('staff').add('|c|' + user.getIdentity(room.id) + '|(__' + room.id + '__) -- ' + message);
- 							Rooms('staff').update();
+ 							Rooms('shadowbanroom').add('|c|' + user.getIdentity(room.id) + '|(__' + room.id + '__) -- ' + message);
+ 							Rooms('shadowbanroom').update();
  						}
  						return false;
  					}
