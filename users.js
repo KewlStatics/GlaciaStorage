@@ -1136,7 +1136,7 @@ User = (function () {
 			this.avatar = Config.customavatars[this.userid];
 		}
 
-		this.isStaff = (this.group in {'♅':1, '%':1, '@':1, '&':1, '~':1});
+		this.isStaff = (this.group in {'∆':1, '%':1, '@':1, '&':1, '~':1});
 		if (!this.isStaff) {
 			let staffRoom = Rooms('staff');
 			this.isStaff = (staffRoom && staffRoom.auth && staffRoom.auth[this.userid]);
