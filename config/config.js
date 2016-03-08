@@ -337,6 +337,7 @@ exports.grouplist = [
 		symbol: '∆',
 		id: "dev",
 		name: "Developer",
+		jurisdiction: '%u',
 		globalonly: true,
 		mute: true,
 		lock: true,
