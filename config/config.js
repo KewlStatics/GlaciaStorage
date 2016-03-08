@@ -337,9 +337,13 @@ exports.grouplist = [
 		symbol: '∆',
 		id: "dev",
 		name: "Developer",
-		inherit: '@',
-		jurisdiction: '@u',
 		globalonly: true,
+		mute: true,
+		lock: true,
+		warn: true,
+		broadcast: true,
+		tournamentsmoderation: true,
+		tournamentsmanagement: true
 	},
 	{
 		symbol: '$',
