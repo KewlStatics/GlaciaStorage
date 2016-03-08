@@ -301,7 +301,7 @@ exports.commands = {
 
 	},
 	tourpoll: function(target, room, user) {
-		var tiers = ['Battle Factory', 'CC 1V1', 'Balanced Hackmons', 'Mix and Mega', 'Monotype', 'OU', 'Random Battles', 'UU'];
+		var tiers = ['Balanced Hackmons', 'Battle Factory', 'CC 1V1', 'Mix and Mega', 'Monotype', 'OU', 'Random Battles', 'UU'];
 		this.parse('/poll new Next Tournament?, ' + tiers);
      	},
         leaguepoll: function(target, room, user) {
