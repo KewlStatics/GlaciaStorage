@@ -406,18 +406,6 @@ exports.Formats = [
 		},
 	},
 	{
-		name: "Unreleased OU",
-		desc: [
-			"Standard OU including unreleased Pokémon, abilities and items, and moves obtained from RBY.",
-			"&bullet; <a href=\"https://www.smogon.com/forums/threads/3566186/\">Unreleased OU</a>",
-		],
-		section: "OM of the Month",
-
-		mod: 'unreleased',
-		ruleset: ['Pokemon', 'Species Clause', 'Nickname Clause', 'Moody Clause', 'OHKO Clause', 'Evasion Moves Clause', 'Swagger Clause', 'Baton Pass Clause', 'Sleep Clause Mod', 'Endless Battle Clause', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview'],
-		banlist: ['Illegal', 'Uber', 'Shadow Tag', 'Soul Dew'],
-	},
-	{
 		name: "[Seasonal] Dimension Doom",
 		desc: ["&bullet; <a href=\"https://www.smogon.com/forums/threads/3491902/\">Seasonal Ladder</a>"],
 		section: "OM of the Month",
