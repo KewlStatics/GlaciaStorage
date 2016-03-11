@@ -4,7 +4,6 @@
 ********************************/
 
 var fs = require('fs');
-var serialize = require('node-serialize');
 var trainerCards = {};
 
 function loadTrainerCards() {
