@@ -385,7 +385,7 @@ exports.Formats = [
 	{
 		name: "Mix and Mega",
 		desc: ["&bullet; <a href=\"https://www.smogon.com/forums/threads/3540979/\">Mix and Mega</a>"],
-		section: "OM of the Month",
+		section: "Other Metagames",
 		column: 2,
 
 		mod: 'mixandmega',
@@ -517,7 +517,7 @@ exports.Formats = [
 			"All Pok&eacute;mon automatically switch out upon using a move that affects the opponent.",
 			"&bullet; <a href=\"https://www.smogon.com/forums/threads/3527847/\">VoltTurn Mayhem</a>",
 		],
-		section: "OM of the Month",
+		section: "Other Metagames",
 
 		ruleset: ['OU'],
 		banlist: [],
@@ -821,7 +821,7 @@ exports.Formats = [
 		section: "Other Metagames",
 
 		team: 'randomMonotype',
-		searchShow: true,
+		searchShow: false,
 		ruleset: ['Pokemon', 'Same Type Clause', 'Sleep Clause Mod', 'HP Percentage Mod', 'Cancel Mod'],
 	},
 	
