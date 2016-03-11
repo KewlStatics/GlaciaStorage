@@ -821,7 +821,7 @@ exports.Formats = [
 		section: "Other Metagames",
 
 		team: 'randomMonotype',
-		searchShow: false,
+		searchShow: true,
 		ruleset: ['Pokemon', 'Same Type Clause', 'Sleep Clause Mod', 'HP Percentage Mod', 'Cancel Mod'],
 	},
 	
