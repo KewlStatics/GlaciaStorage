@@ -227,7 +227,8 @@ body {
   }
   
 #lobby-userlist-user-kokonoesan strong em, #lobby-userlist-user-kokonoesan strong, #lobby-userlist-user-kokonoesan span, #staff-userlist-user-kokonoesan strong em, #staff-userlist-user-kokonoesan strong, #staff-userlist-user-kokonoesan span{
-color: blue !important;
+color: #FF69B4;
 }
 .chat.chatmessage-kokonoesan strong {
-color: blue !important;
+color: #FF69B4;
+}
