@@ -225,3 +225,7 @@ body {
 .menugroup .button:hover {
     background: #99ffff;
   }
+
+.chat.chatmessage-traineralain  strong { 
+    color:orange !important;
+}
