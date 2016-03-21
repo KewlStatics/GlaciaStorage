@@ -3,6 +3,7 @@
 }
 #lobby-userlist-user-irishlasskicker, #staff-userlist-user-irishlasskicker, #wifi-userlist-user-irishlasskicker, #aeondraftleague-userlist-user-irishlasskicker, #roleplaying-userlist-user-irishlasskicker, #competitivetutoring-userlist-user-irishlasskicker {
     background:url("http://pokedream.com/pokedex/images/mini/155.gif") no-repeat right
+    color:#FFA500;
 }
 #lobby-userlist-user-bradderstheepic, #staff-userlist-user-bradderstheepic {
     background:url("http://orig14.deviantart.net/c6c3/f/2015/254/c/e/mega_scizor_icon_by_commander_f-d9963qx.gif") no-repeat right
@@ -226,6 +227,3 @@ body {
     background: #99ffff;
   }
 
-.userlist-user-irishlasskicker  strong { 
-    color:#FFA500 !important;
-}
