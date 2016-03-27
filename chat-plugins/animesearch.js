@@ -82,8 +82,8 @@ function search (query) {
 }
 
 exports.commands = {
-	animesearch: 'anime',
-	as: 'anime',
+	animesearch: 'animesearch',
+	as: 'animesearch',
 	anime: function (target, room, user, connection, cmd) {
 		if (!this.canBroadcast()) return;
 		if (this.broadcasting && room.id === 'Omega') return this.errorReply("This command cannot be broadcasted in the Lobby.");
