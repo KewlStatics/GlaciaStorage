@@ -1901,12 +1901,12 @@ exports.commands = {
 		for (let id in Rooms.rooms) {
 			if (id === 'global') continue;
 			let curRoom = Rooms.rooms[id];
-			curRoom.addRaw("<div class=\"broadcast-pink\"><b>Glacia quickly needs to refresh herself.</b><br />Sasha is bad. Please finish your battle ASAP, if things go correctly we should be back up and running smoothly within 30 seconds.</div>");
+			curRoom.addRaw("<div class=\"broadcast-red\"><b>Glacia quickly needs to refresh herself.</b><br />Sasha is bad. Please finish your battle ASAP, if things go correctly we should be back up and running smoothly within 30 seconds.</div>");
 			if (curRoom.requestKickInactive && !curRoom.battle.ended) {
 				curRoom.requestKickInactive(user, true);
 				if (curRoom.modchat !== '+') {
 					curRoom.modchat = '+';
-					curRoom.addRaw("<div class=\"broadcast-pink\"><b>Moderated chat was set to +!</b><br />Only users of rank + and higher can talk.</div>");
+					curRoom.addRaw("<div class=\"broadcast-red\"><b>Moderated chat was set to +!</b><br />Only users of rank + and higher can talk.</div>");
 				}
 			}
 		}
@@ -1930,7 +1930,7 @@ exports.commands = {
 			if (id === 'global') continue;
 			let curRoom = Rooms.rooms[id];
 			if (curRoom.battle) continue;
-			curRoom.addRaw("<div class=\"broadcast-red\"><b>The server is restarting soon.</b><br />Please finish your battles quickly. No new battles can be started until the server resets in a few minutes.</div>");
+			curRoom.addRaw("<div class=\"broadcast-red\"><b>Glacia quickly needs to refresh herself.</b><br />Sasha is bad. Please finish your battle ASAP, if things go correctly we should be back up and running smoothly within 30 seconds.</div>");
 		}
 
 		this.logEntry(user.name + " used /slowlockdown");
