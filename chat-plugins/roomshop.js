@@ -9,7 +9,7 @@
 'use strict';
  
 const fs = require('fs');
-const db = require('origindb')('./config/db');
+const db = require('glaciaps')('./config/db');
 const MAX_ITEMS = 12;
  
 /*currencyName: function (_cost){
