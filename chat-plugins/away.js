@@ -88,10 +88,6 @@ exports.commands = {
 		this.parse('/away AFK');
 	},
 	
-	anime: function (target, room, user) {
-		this.parse('/away ANIME');
-	},
-
 	busy: function (target, room, user) {
 		this.parse('/away BUSY');
 	},
