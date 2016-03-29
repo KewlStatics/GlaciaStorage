@@ -79,7 +79,7 @@ function getRewardCenterDisplay(rewardcenter) {
 					"</tr>";
 		start++;
 	}
-	display += "</tbody></table><center>To win an item from the shop, use /win <em>command</em><br>For PSGO packs, vist the <button name='send' value='/packshop'>Packshop</button>.</center>";
+	display += "</tbody></table><center>To win an item from the shop, use /win <em>command</em>.</center>";
 	return display;
 }
 
