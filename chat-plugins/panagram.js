@@ -4,7 +4,8 @@
  * format that is dedicated to Pokemon
  * names. Winners recieve 0.25 bucks a peice.
  */
-'use strict';
+var path = require('path');
+var fs = require('fs');
 
 
 function mix(word) {
