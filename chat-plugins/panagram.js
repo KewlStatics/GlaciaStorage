@@ -57,8 +57,8 @@ var Panagram = (function () {
 		}
 	}
 	Panagram.prototype.guess = function (user, guess) {
-	        function nameColor(name) {
-	        return '<font color="' + name + '">' + Tools.escapeHTML(name) + '</font>';
+	    function nameColor(name) {
+	           return '<font color="' + name + '">' + Tools.escapeHTML(name) + '</font>';
 	        }
 		if (guess.species === this.answer.species) {
 			this.room.add('|html|<b>' + user.name + '</b> guessed <b>' + guess.species + '</b>, which was the correct answer! This user has also won 1 ticket!');
