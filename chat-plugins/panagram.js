@@ -58,14 +58,14 @@ var Panagram = (function () {
 	}
 	Panagram.prototype.guess = function (user, guess) {
 	    function nameColor(name) {
-	        return '<font color="' + nameColor(name) + '">' + Tools.escapeHTML(name) + '</font>';
+	        return '<font color="' + name + '">' + Tools.escapeHTML(name) + '</font>';
 	    }
 		if (guess.species === this.answer.species) {
-			this.room.add('|html|<b>' + nameColor(user.name) + '</b> guessed <b>' + guess.species + '</b>, which was the correct answer! This user has also won 1 ticket!');
+			this.room.add('|html|<b>' + user.name + '</b> guessed <b>' + guess.species + '</b>, which was the correct answer! This user has also won 1 ticket!');
 			Db('ticket').set(toId(user.userid), Db('ticket').get(toId(user), 0) + 1).get(toId(user.userid));
 			this.end();
 		} else {
-			this.room.add('|html|<b>' + nameColor(user.name) + '</b> guessed <b>' + guess.species + '</b>, but was not the correct answer...');
+			this.room.add('|html|<b>' + user.name + '</b> guessed <b>' + guess.species + '</b>, but was not the correct answer...');
 			this.guessed[toId(guess.species)] = user.userid;
 		}
 	};
