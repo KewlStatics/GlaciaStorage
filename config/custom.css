@@ -2,7 +2,7 @@
     background:url("http://orig00.deviantart.net/71cd/f/2009/350/0/f/sleeping_glaceon_by_lionheartcartoon.gif") no-repeat right
 }
 #lobby-userlist-user-wndo, #staff-userlist-user-wndo, #wifi-userlist-user-wndo, #aeondraftleague-userlist-user-wndo, #theastralleague-userlist-user-wndo, #thelunarleague-userlist-user-wndo, #roleplaying-userlist-user-wndo, #thelicentialeague-userlist-user-wndo, #shadowbanroom-userlist-user-wndo, #casino-userlist-user-kokonoesan, #doublesfrontier-userlist-user-wndo, #thebattletowerr-userlist-user-wndo, #GCW-userlist-user-wndo {
-    background:url("http://orig00.deviantart.net/71cd/f/2009/350/0/f/sleeping_glaceon_by_lionheartcartoon.gif") no-repeat right
+    background:url("http://pokedream.com/pokedex/images/mini/007.gif") no-repeat right
 }
 #lobby-userlist-user-irishlasskicker, #staff-userlist-user-irishlasskicker, #wifi-userlist-user-irishlasskicker, #aeondraftleague-userlist-user-irishlasskicker, #roleplaying-userlist-user-irishlasskicker, #thelunarleague-userlist-user-irishlasskicker {
     background:url("http://pokedream.com/pokedex/images/mini/155.gif") no-repeat right
@@ -90,6 +90,45 @@ body {
       border-color:#f472c1;
       background:rgba(243,255,253,0.95);
       color:#000
+}
+
+.pm-window-wndo h3:hover,.pm-window-wndo.focused h3,.pm-window-wndo.focused h3:hover {
+      background:#e68a00 url("http://www.serebii.net/pokedex-dp/icon/007.gif") no-repeat;
+      background-position:225px -8px;
+      color:#00ffff;
+      border-color:#00ffff
+}
+
+.pm-window-wndo h3 small,.pm-window-wndo h3 .minimizebutton,.pm-window-wndo h3 .closebutton,.pm-window-wndo h3:hover .minimizebutton {
+      color:#000000
+}
+
+.pm-window-wndo h3 .closebutton:hover+.minimizebutton.minimizebutton {
+      color:#00ffff
+}
+
+.pm-window-wndo h3 .closebutton:hover {
+      color:#00ffff
+}
+
+.pm-window-wndo h3 .minimizebutton:hover {
+      color:#00ffff
+}
+
+.pm-window-wndo .pm-log,.pm-window-wndo.focused .pm-log {
+      background:rgba(236,255,251,0.9) url("http://orig14.deviantart.net/88b5/f/2012/090/b/8/ash__s_squirtle_sprite_by_edenselite-d4ui81p.png") no-repeat right top;
+      border-color:#e68a00
+}
+
+.pm-window-wndo .pm-log-add,.pm-window-wndo.focused .pm-log-add {
+      background:#00ffff;
+      border-color:#e68a00
+}
+
+.pm-window-wndo .pm-log-add .textbox{
+      border-color:#e68a00;
+      background:#00ffff;
+      color:#ff3399
 }
       
 .pm-log{
