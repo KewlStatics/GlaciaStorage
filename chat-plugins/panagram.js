@@ -4,8 +4,8 @@
  * format that is dedicated to Pokemon
  * names. Winners recieve 0.25 bucks a peice.
  */
-var path = require('path');
-var fs = require('fs');
+if (!Global.pGames) Global.pGames = {};
+var pGames = Global.pGames;
 
 
 function mix(word) {
