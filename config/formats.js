@@ -74,14 +74,6 @@ exports.Formats = [
 		banlist: ['UU', 'BL2'],
 	},
 	{
-		name: "RU (suspect test)",
-		section: "ORAS Singles",
-
-		challengeShow: false,
-		ruleset: ['UU'],
-		banlist: ['UU', 'BL2'],
-	},
-	{
 		name: "NU",
 		desc: [
 			"&bullet; <a href=\"https://www.smogon.com/forums/threads/3567055/\">np: NU Stage 12</a>",
@@ -91,14 +83,6 @@ exports.Formats = [
 		section: "ORAS Singles",
 
 		searchShow: false,
-		ruleset: ['RU'],
-		banlist: ['RU', 'BL3'],
-	},
-	{
-		name: "NU (suspect test)",
-		section: "ORAS Singles",
-
-		challengeShow: false,
 		ruleset: ['RU'],
 		banlist: ['RU', 'BL3'],
 	},
