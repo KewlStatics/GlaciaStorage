@@ -3,7 +3,7 @@
 let fs = require('fs');
 let path = require('path');
 
-let rewardcenter = [
+let rewardcentre = [
         ['Monobuck!', 'Buys 1 buck. (PM an Admin or leader immediately after purchase.)', 75],
         ['Pentabucks!', 'Buys 5 bucks. (PM an Admin or leader immediately after purchase.)', 300],
         ['Decabucks!', 'Buys 10 buck. (PM an Admin or leader immediately after purchase.)', 500],
@@ -17,7 +17,7 @@ let rewardcenter = [
 
 ];
 
-let rewardcenterDisplay = getRewardCenterDisplay(rewardcenter);
+let rewardcentreDisplay = getRewardCentreDisplay(rewardcentre);
 
 /**
  * Gets an amount and returns the amount with the name of the currency.
@@ -68,15 +68,15 @@ function logTicket(message) {
  * @param {Array} shop
  * @return {String} display
  */
-function getRewardCenterDisplay(rewardcenter) {
+function getRewardCentreDisplay(rewardcentre) {
 	let display = "<table border='1' cellspacing='0' cellpadding='5' width='100%'>" +
 					"<tbody><tr><th>Command</th><th>Description</th><th>Cost</th></tr>";
 	let start = 0;
-	while (start < rewardcenter.length) {
+	while (start < rewardcentre.length) {
 		display += "<tr>" +
-						"<td align='center'><button name='send' value='/win " + rewardcenter[start][0] + "'><b>" + rewardcenter[start][0] + "</b></button>" + "</td>" +
-						"<td align='center'>" + rewardcenter[start][1] + "</td>" +
-						"<td align='center'>" + rewardcenter[start][2] + "</td>" +
+						"<td align='center'><button name='send' value='/win " + rewardcentre[start][0] + "'><b>" + rewardcentre[start][0] + "</b></button>" + "</td>" +
+						"<td align='center'>" + rewardcentre[start][1] + "</td>" +
+						"<td align='center'>" + rewardcentre[start][2] + "</td>" +
 					"</tr>";
 		start++;
 	}
@@ -93,12 +93,12 @@ function getRewardCenterDisplay(rewardcenter) {
  * @return {Object}
  */
 function findItem(item, ticket) {
-	let len = rewardcenter.length;
+	let len = rewardcentre.length;
 	let price = 0;
 	let amount = 0;
 	while (len--) {
-		if (item.toLowerCase() !== rewardcenter[len][0].toLowerCase()) continue;
-		price = rewardcenter[len][2];
+		if (item.toLowerCase() !== rewardcentre[len][0].toLowerCase()) continue;
+		price = rewardcentre[len][2];
 		if (price > ticket) {
 			amount = price - ticket;
 			this.errorReply("You don't have you enough tickets for this. You need " + amount + currencyName(amount) + " more to win " + item + ".");
@@ -230,12 +230,12 @@ exports.commands = {
 	},
 	transfertickethelp: ["/transfertickets [user], [amount] - Transfer a certain amount of tickets to a user."],
 
-	rewardcenter: 'rewardcenter',
-	rewardcenter: function (target, room, user) {
+	rewardcentre: 'rewardcentre',
+	rewardcentre: function (target, room, user) {
 		if (!this.canBroadcast()) return;
-		return this.sendReply("|raw|" + rewardcenterDisplay);
+		return this.sendReply("|raw|" + rewardcentreDisplay);
 	},
-	rewardcenterhelp: ["/rewardcenter - Display items you can win with tickets."],
+	rewardcentrehelp: ["/rewardcentre - Display items you can win with tickets."],
 
 	win: function (target, room, user) {
 		if (!target) return this.parse('/help win');
