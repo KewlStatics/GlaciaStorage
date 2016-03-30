@@ -312,14 +312,14 @@ exports.commands = {
 	cardshelp: function (target, room, user) {
 		if (!this.canBroadcast()) return;
 		return this.sendReplyBox('\
-			<center><b><u>LUX Trading Card Game:</u></b></center><br>\
+			<center><b><u>Glacia Trading Card Game:</u></b></center><br>\
 			<b>/buypack</b> - Buys a pack from the pack shop.<br>\
 			<b>/packshop</b> - Shows the shop for buying packs.<br>\
 			<b>/openpack</b> - Opens a pack that has been purchased from the shop.<br>\
 			<b>/showcase</b> - Shows a display of all cards that you have. Specify a page number to see more cards.<br>\
 			<b>/card</b> - Shows data and information on any specifc card.<br>\
 			<b>/cardladder</b> - Shows the leaderboard of the users with the most card points.<br>\
-			<center><b>Special Thanks To Fender, Naten, and Nineage for creating such a wonderful feature and allowing us to use it! n_n</b></center>\
+			<center><b>Special Thanks To Fender, Naten, and Nineage for creating such a wonderful feature! n_n</b></center>\
 		');
 	},
 	searchcards: function (target, room, user) {
