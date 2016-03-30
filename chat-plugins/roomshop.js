@@ -128,13 +128,13 @@ exports.commands = {
 		if(targets[0] == 'buy'){
 		    var item = targets[1].replace(' ','');
 		    var _this = this;
-		    Database.read('money', user.userid, function (err, amount) {
+		    Db.read('money', user.userid, function (err, amount) {
     			if (err) throw err;
     			if (!amount) amount = 0;
     			var cost = findItem.call(_this, item, amount, shop);
     			if (!cost) return room.update();
     			if(!shop.bank){
-    			    Database.write('money', amount - cost, user.userid, function (err, total) {
+    			    Db.write('money', amount - cost, user.userid, function (err, total) {
         				if (err) throw err;
         				_this.sendReply("You have bought " + item + " for " + cost +  currencyName(cost) + ". You now have " + total + currencyName(total) + " left.");
         				room.addRaw(user.name + " has bought <b>" + item + "</b> from the shop.");
@@ -148,7 +148,7 @@ exports.commands = {
         				room.update();
     			    });
     			}else{
-    			    Database.read('money', toId(shop.bank), function (err, amount) {
+    			    Db.read('money', toId(shop.bank), function (err, amount) {
         			if (err) throw err;
         			if (!amount) amount = 0;
         			var cost = findItem.call(_this, item, amount, shop);
@@ -156,12 +156,12 @@ exports.commands = {
         			//amount = isMoney(amount);
 					if(!Number(amount)) amount = 0;
         			if (!cost) return room.update();
-        			    Database.write('money', amount + cost, toId(shop.bank), function (err, total) {
+        			    Db.write('money', amount + cost, toId(shop.bank), function (err, total) {
             				if (err) throw err;
             				//_this.sendReply('Bank has been given '+cost);
     			        });
     			    });
-    			    Database.write('money', amount - cost, user.userid, function (err, total) {
+    			    Db.write('money', amount - cost, user.userid, function (err, total) {
         				if (err) throw err;
         				_this.sendReply("You have bought " + item + " for " + cost +  currencyName(cost) + ". You now have " + total + currencyName(total) + " left.");
         				room.addRaw(user.name + " has bought <b>" + item + "</b> from the shop.");
