@@ -1,7 +1,10 @@
+ exports.commands = {
+
 var fs = require('fs');
 var path = require('path');
 var moment = require('moment');
 
+ exports.commands = {
  roomshop: 'leagueshop',
     roomshop: function(target, room, user) {
         if (!room.founder) return this.sendReply('/leagueshop - league shops require a room founder.');
