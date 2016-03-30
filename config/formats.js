@@ -69,7 +69,7 @@ exports.Formats = [
 		],
 		section: "ORAS Singles",
 
-		searchShow: false,
+		searchShow: true,
 		ruleset: ['UU'],
 		banlist: ['UU', 'BL2'],
 	},
@@ -82,7 +82,7 @@ exports.Formats = [
 		],
 		section: "ORAS Singles",
 
-		searchShow: false,
+		searchShow: true,
 		ruleset: ['RU'],
 		banlist: ['RU', 'BL3'],
 	},
