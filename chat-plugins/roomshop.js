@@ -1,147 +1,224 @@
-var db = new sqlite3.Database('config/users.db', function() {
-    db.run("CREATE TABLE if not exists users (userid TEXT, name TEXT, bucks INTEGER)");
-});
- 
 var fs = require('fs');
-var http = require('http');
-var MD5 = require('MD5');
-var shopTitle = 'Shop';
-var serverIp = '127.0.0.1';
+var path = require('path');
+var moment = require('moment');
+
+var defaultShop = '{"itemList":[' +
+'{"item":"Kick" , "desc":"Kick a member of your choice! (Limit: 5/day)" , "price":"5"},' +
+'{"item":"Declare" , "desc":"Declare a message of your choice (Can be refused)" , "price":"10"},' +
+'{"item":"Mute" , "desc":"Mute a member of your choice for 7 minutes (Can only be used 1/member)" , "price":"15"},' +
+'{"item":"Rank Up" , "desc":"Get promoted by ONE rank for 24 hours (Can be taken away)" , "price":"30"}],'+
+'"bank":"Knight Char"}';
+
+/**
+ * Gets an amount and returns the amount with the name of the currency.
+ *
+ * @examples
+ * currencyName(0); // 0 bucks
+ * currencyName(1); // 1 buck
+ * currencyName(5); // 5 bucks
+ *
+ * @param {Number} amount
+ * @returns {String}
+ */
+function currencyName(amount) {
+	var name = " buck";
+	return amount === 1 ? name : name + "s";
+}
+
+/**
+ * Log money to logs/money.txt file.
+ *
+ * @param {String} message
+ */
+function logMoney(message,roomName) {
+	if (!message) return;
+	var file = path.join(__dirname, '../logs/roomshops/'+roomName+'shop.txt');
+	var date = "[" + new Date().toUTCString() + "] ";
+	var msg = message + "\n";
+	fs.appendFile(file, date + msg);
+}
+
+/**
+ * Checks if the money input is actually money.
+ *
+ * @param {String} money
+ * @return {String|Number}
+ */
+function isMoney(money) {
+	var numMoney = Number(money);
+	if (isNaN(money)) return "Must be a number.";
+	if (String(money).includes('.')) return "Cannot contain a decimal.";
+	if (numMoney < 1) return "Cannot be less than one buck.";
+	return numMoney;
+}
+
+/**
+ * Find the item in the shop.
+ *
+ * @param {String} item
+ * @param {Number} money
+ * @return {Object}
+ */
+function findItem(item, money, shop) {
+	var len = shop.itemList.length;
+	var price = 0;
+	var amount = 0;
+	while (len--) {
+		if (item.toLowerCase() !== shop.itemList[len].item.toLowerCase()) continue;
+		price = shop.itemList[len].price;
+		if (price > money) {
+			amount = price - money;
+			this.sendReply("You don't have you enough money for this. You need " + amount + currencyName(amount) + " more to buy " + item + ".");
+			return false;
+		}
+		return price;
+	}
+	this.sendReply(item + " not found in shop.");
+}
 
 exports.commands = {
- roomshop: 'leagueshop',
-    roomshop: function(target, room, user) {
-        if (!room.founder) return this.sendReply('/leagueshop - league shops require a room founder.');
-        if (!room.shopList) room.shopList = [];
-        if (!target) var target = '';
-        var self = this;
- 
-        var cmdParts = target.split(' ');
-        var cmd = cmdParts.shift().trim().toLowerCase();
-        var params = cmdParts.join(' ').split(',').map(function (param) { return param.trim(); });
- 
-        switch (cmd) {
-            case 'list':
-            case 'view':
-            default:
-                if (!this.canBroadcast()) return;
-                if (room.shopList.length < 1) return this.sendReplyBox('<center><b><u>This shop has no items!</u></b></center>');
-                var output = '<center><h4><b><u><font color="#24678d">' + Tools.escapeHTML(room.title) + '\'s Shop</font></u></b></h4><table border="1" cellspacing ="0" cellpadding="3"><tr><th>Item</th><th>Description</th><th>Price</th></tr>';
-                for (var u in room.shopList) {
-                    if (!room.shop[room.shopList[u]] || !room.shop[room.shopList[u]].name || !room.shop[room.shopList[u]].description || !room.shop[room.shopList[u]].price) continue;
-                    output += '<tr><td><button name="send" value="/leagueshop buy ' + Tools.escapeHTML(room.shopList[u]) + '" >' + Tools.escapeHTML(room.shop[room.shopList[u]].name) +
-                    '</button></td><td>' + Tools.escapeHTML(room.shop[room.shopList[u]].description.toString()) + '</td><td>' + room.shop[room.shopList[u]].price + '</td></tr>';
-                }
-                output += '</center><br />';
-                this.sendReplyBox(output);
-                break;
-            case 'add':
-                if (!user.can('roommod', null, room)) return this.sendReply('/leagueshop - Access denied.');
-                if (params.length < 3) return this.sendReply('Usage: /leagueshop add [item name], [description], [price]');
-                if (!room.shopList) room.shopList = [];
-                var name = params.shift();
-                var description = params.shift();
-                var price = Number(params.shift());
-                if (isNaN(price)) return this.sendReply('Usage: /leagueshop add [item name], [description], [price]');
-                var bucks = 'bucks';
-                if (Number(price) < 2) bucks = 'buck';
-                room.shop[toId(name)] = new Object();
-                room.shop[toId(name)].name = name;
-                room.shop[toId(name)].description = description;
-                room.shop[toId(name)].price = price;
-                room.shopList.push(toId(name));
-                room.chatRoomData.shop = room.shop;
-                room.chatRoomData.shopList = room.shopList;
-                Rooms.global.writeChatRoomData();
-                this.sendReply('Added "' + name + '" to the league shop for ' + price + ' ' + ((price === 1) ? " buck." : " bucks.") + '.');
-                break;
-            case 'remove':
-            case 'rem':
-            case 'del':
-            case 'delete':
-                if (!user.can('roommod', null, room)) return this.sendReply('/leagueshop - Access denied.');
-                if (params.length < 1) return this.sendReply('Usage: /leagueshop delete [item name]');
-                var item = params.shift();
-                if (!room.shop[toId(item)]) return this.sendReply('/leagueshop - Item "'+item+'" not found.');
-                delete room.shop[toId(item)];
-                var index = room.shopList.indexOf(toId(item));
-                if (index > -1) {
-                    room.shopList.splice(index, 1);
-                }
-                this.sendReply('Removed "' + item + '" from the league shop.');
-                break;
-            case 'buy':
-                if (params.length < 1) return this.sendReply('Usage: /leagueshop buy [item name]');
-                var item = params.shift();
-                if (!room.shop[toId(item)]) return this.sendReply('/leagueshop - Item "'+item+'" not found.');
-                readMoney(user.userid, function(money) {
-                    if (money < room.shop[toId(item)].price) return self.sendReply('You don\'t have enough bucks to purchase a '+item+'. You need '+ ((money - room.shop[toId(item)].price) * -1) + ' more bucks.');
-                    var buck = 'buck';
-                    if (room.shop[toId(item)].price > 1) buck = 'bucks';
-                    if (!room.shopBank) room.shopBank = room.founder;
-                    self.parse('/transferbucks '+room.shopBank+','+room.shop[toId(item)].price);
-                    fs.appendFile('logs/leagueshop_'+room.id+'.txt', '['+new Date().toJSON()+'] '+user.name+' has purchased a '+room.shop[toId(item)].price+' for '+room.shop[toId(item)].price+' '+buck+'.\n');
-                    room.add(user.name + ' has purchased a ' + room.shop[toId(item)].name + ' for ' + room.shop[toId(item)].price + ' ' + ((price === 1) ? " buck." : " bucks.") + '.');
-                });
-                break;
-            case 'help':
-                if (!this.canBroadcast()) return;
-                this.sendReplyBox('The following is a list of league shop commands: <br />' +
-                    '/leagueshop view/list - Shows a complete list of shop items.`<br />' +
-                    '/leagueshop add [item name], [description], [price] - Adds an item to the shop.<br />' +
-                    '/leagueshop delete/remove [item name] - Removes an item from the shop.<br />' +
-                    '/leagueshop buy [item name] - Purchases an item from the shop.<br />' +
-                    '/leagueshop viewlog [number of lines OR word to search for] - Views the last 15 lines in the shop log.<br />' +
-                    '/leagueshop bank [username] - Sets the room bank to [username]. The room bank receives all funds from purchases in the shop.'
-                );
-                break;
-            case 'setbank':
-            case 'bank':
-                if (user.userid !== room.founder && !user.can('seniorstaff')) return this.sendReply('/leagueshop - Access denied.');
-                if (params.length < 1) return this.sendReply('Usage: /leagueshop bank [username]');
-                var bank = params.shift();
-                room.shopBank = toId(bank);
-                room.chatRoomData.shopBank = room.shopBank;
-                Rooms.global.writeChatRoomData();
-                this.sendReply('The room bank is now set to '+room.shopBank);
-                break;
-            case 'log':
-            case 'viewlog':
-                if (!user.can('roommod', null, room)) return this.sendReply('/leagueshop - Access denied.');
-                var target = params.shift();
-                var lines = 0;
-                if (!target.match('[^0-9]')) {
-                    lines = parseInt(target || 15, 10);
-                    if (lines > 100) lines = 100;
-                }
-                var filename = 'logs/leagueshop_'+room.id+'.txt';
-                var command = 'tail -'+lines+' '+filename;
-                var grepLimit = 100;
-                if (!lines || lines < 0) { // searching for a word instead
-                    if (target.match(/^["'].+["']$/)) target = target.substring(1,target.length-1);
-                    command = "awk '{print NR,$0}' "+filename+" | sort -nr | cut -d' ' -f2- | grep -m"+grepLimit+" -i '"+target.replace(/\\/g,'\\\\\\\\').replace(/["'`]/g,'\'\\$&\'').replace(/[\{\}\[\]\(\)\$\^\.\?\+\-\*]/g,'[$&]')+"'";
-                }
- 
-                require('child_process').exec(command, function(error, stdout, stderr) {
-                    if (error && stderr) {
-                        user.popup('/leagueshop viewlog erred - the shop log does not support Windows');
-                        console.log('/leagueshop viewlog error: '+error);
-                        return false;
-                    }
-                    if (lines) {
-                        if (!stdout) {
-                            user.popup('The log is empty.');
-                        } else {
-                            user.popup('Displaying the last '+lines+' lines of shop purchases:\n\n'+stdout);
-                        }
-                    } else {
-                        if (!stdout) {
-                            user.popup('No purchases containing "'+target+'" were found.');
-                        } else {
-                            user.popup('Displaying the last '+grepLimit+' logged purchases containing "'+target+'":\n\n'+stdout);
-                        }
-                    }
-                });
-            break;
+	roomshop: function(target, room, user, connection){
+        if (!this.canBroadcast()) return;
+        var targets = target.split(',');
+        if(targets[0] != 'view' && targets[0] != 'list' && targets[0] != 'add' && targets[0] != 'delete' && targets[0] != 'remove' && targets[0] != 'viewlog' && targets[0] != 'bank' && targets[0] != 'buy' && targets[0] != 'help' && targets[0] != 'enable') return this.sendReply('/roomshop help - List available /roomshop commands.');
+        if(targets[0] == 'on'){
+			room.roomshop = true;
+			room.chatRoomData.roomshop = true;
+			Rooms.global.writeChatRoomData();
+			return this.sendReply('Room shop has been enabled for this room');
+		}
+		if(targets[0] == 'off'){
+			delete room.roomshop;
+			delete room.chatRoomData.roomshop;
+			Rooms.global.writeChatRoomData();
+			return this.sendReply('Room shop has been disabled for this room');
+		}
+		if(targets[0] == 'help'){
+            return this.sendReplyBox('The following is a list of room shop commands:<br/>'+
+                            '/roomshop view/list - Shows a complete list of the shop items.<br/>'+
+                            '/roomshop add, [item name], [description], [price] - Adds an item to the shop.<br/>'+
+                            '/roomshop delete/remove, [item name] - Removes an item from the shop.<br/>'+
+                            '/roomshop buy, [item name] - Purchase an item from the shop.<br/>'+
+                            '/roomshop viewlog, [number of lines] - Views the last 15 lines in the shop log.<br/>'+
+                            '/roomshop bank, [username] - Sets the room bank to [username]. The room bank receives all funds from the puchases in the shop.')
         }
-    },
+        var roomName = toId(room.title);
+        if (fs.existsSync('storage-files/'+roomName+'shop.json')) {
+  			var shop = JSON.parse(fs.readFileSync('storage-files/'+roomName+'shop.json'));
+		}else{
+		    var shop = JSON.parse(defaultShop);
+			fs.writeFileSync('storage-files/'+roomName+'shop.json', defaultShop);
+			var shop = JSON.parse(fs.readFileSync('storage-files/'+roomName+'shop.json'));
+		}
+		if(targets[0] == 'view' || targets[0] == 'list'){
+		    var shopList = '<div><center><h2><u>'+room.title+'\'s Shop.</h2></u><br/><table cellpadding="6" border="1"><tr><td align="center"><h3><u>Item</h3></u></td><td align="center"><h3><u>Description</h3></u></td><td align="center"><h3><u>Price</h3></u></td></tr><br/>';
+    		for (var i = 0; i < shop.itemList.length; i++){
+    		    var item = shop.itemList[i].item;
+    		    var desc = shop.itemList[i].desc;
+    		    var price = shop.itemList[i].price;
+    		    shopList += '<tr>' + 
+    		        '<td align="center"><button name="send" value="/roomshop buy, '+ item + '">' + item + '</button>' + '</td>' + 
+    		        '<td align="center">'+  desc + '</td>' + 
+    		        '<td align="center">' + price + '</td>' + 
+    		        '</tr>';
+    		}
+    		shopList += '</center></div><br/>'
+    		return this.sendReplyBox(shopList);
+		}
+		if(targets[0] == 'buy'){
+		    var item = targets[1].replace(' ','');
+		    var _this = this;
+		    Database.read('money', user.userid, function (err, amount) {
+    			if (err) throw err;
+    			if (!amount) amount = 0;
+    			var cost = findItem.call(_this, item, amount, shop);
+    			if (!cost) return room.update();
+    			if(!shop.bank){
+    			    Database.write('money', amount - cost, user.userid, function (err, total) {
+        				if (err) throw err;
+        				_this.sendReply("You have bought " + item + " for " + cost +  currencyName(cost) + ". You now have " + total + currencyName(total) + " left.");
+        				room.addRaw(user.name + " has bought <b>" + item + "</b> from the shop.");
+        				logMoney(user.name + " has bought " + item + " from the shop. This user now has " + total + currencyName(total) + ".", roomName);
+        				var msg = '**' + user.name + " has bought " + item + ".**";
+                		for (var i in Users.users) {
+                			if (room.auth[Users.users[i]] === '#') {
+                				Users.users[i].send('|pm|~Shop Alert|' + Users.users[i].getIdentity() + '|' + msg);
+                			}
+                		}
+        				room.update();
+    			    });
+    			}else{
+    			    Database.read('money', toId(shop.bank), function (err, amount) {
+        			if (err) throw err;
+        			if (!amount) amount = 0;
+        			var cost = findItem.call(_this, item, amount, shop);
+        			cost = isMoney(cost);
+        			//amount = isMoney(amount);
+					if(!Number(amount)) amount = 0;
+        			if (!cost) return room.update();
+        			    Database.write('money', amount + cost, toId(shop.bank), function (err, total) {
+            				if (err) throw err;
+            				//_this.sendReply('Bank has been given '+cost);
+    			        });
+    			    });
+    			    Database.write('money', amount - cost, user.userid, function (err, total) {
+        				if (err) throw err;
+        				_this.sendReply("You have bought " + item + " for " + cost +  currencyName(cost) + ". You now have " + total + currencyName(total) + " left.");
+        				room.addRaw(user.name + " has bought <b>" + item + "</b> from the shop.");
+        				logMoney(user.name + " has bought " + item + " from the shop. This user now has " + total + currencyName(total) + ".", roomName);
+        				var msg = '**' + user.name + " has bought " + item + ".**";
+                		for (var i in Users.users) {
+                			if (room.auth[Users.users[i]] === '#') {
+                				Users.users[i].send('|pm|~Shop Alert|' + Users.users[i].getIdentity() + '|' + msg);
+                			}
+                		}
+        				room.update();
+    			    });
+    			}
+    			
+    		});
+		}
+		if(targets[0] == 'add'){
+			if (room.auth[user.userid] != '#') return;
+		    var item = targets[1].replace(' ','');
+		    var desc = targets[2].slice(1);
+		    var price = targets[3].replace(' ','');
+		    shop.itemList.push({"item":item,"desc":desc,"price":price});
+		    fs.writeFile('storage-files/'+roomName+'shop.json', JSON.stringify(shop));
+		    return this.sendReply('Added new item to the shop');
+		    //return this.sendReply(item + ' ' + desc + ' ' + price);
+		}
+		if(targets[0] == 'delete' || targets[0] == 'remove'){
+			if (room.auth[user.userid] != '#') return;
+		    var item = targets[1].replace(' ','');
+		    var len = shop.itemList.length;
+		    while (len--) {
+		        if (item.toLowerCase() !== shop.itemList[len].item.toLowerCase()) continue;
+		        shop.itemList.remove(shop.itemList[len]);
+		        fs.writeFile('storage-files/'+roomName+'shop.json', JSON.stringify(shop));
+		        return this.sendReply('Removed '+item+' from the shop');
+		    } 
+		}
+		if(targets[0] == 'viewlog'){
+		    if (room.auth[user.userid] != '#') return;
+    		var numLines = 15;
+    		if(targets[1] && isNaN(targets[1])) return this.sendReply('Please use a number to define how many lines.')
+    		if(targets[1]) numLines = targets[1];
+    		var matching = true;
+    		var topMsg = "Displaying the last " + numLines + " lines of transactions:\n";
+    		var file = path.join(__dirname, '../logs/shopshops/'+roomName+'shop.txt');
+    		fs.exists(file, function (exists) {
+    			if (!exists) return connection.popup("No transactions.");
+    			fs.readFile(file, 'utf8', function (err, data) {
+    				data = data.split('\n');
+    				connection.popup('|wide|' + topMsg + data.slice(-(numLines + 1)).join('\n'));
+    			});
+    		});
+		}
+		if(targets[0] == 'bank'){
+		    shop.bank = toId(targets[1]);
+		    fs.writeFile('storage-files/'+roomName+'shop.json', JSON.stringify(shop));
+		    return this.sendReply('Room shop bank has been set to '+shop.bank);
+		}
+    }
+};
