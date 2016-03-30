@@ -4,8 +4,8 @@ let fs = require('fs');
 let path = require('path');
 
 let rewardcenter = [
-    ['Bucks', 'Buys 1 buck. (PM an admin or leader)', 100],
-        ['PSGO pack', 'Buys 1 PSGO pack. (PM an admin the pack you'd like)', 1000],
+        ['Bucks', 'Buys 1 buck. (PM an admin or leader)', 100],
+        ['PSGO', 'Buys 1 PSGO pack. (PM an admin for the pack)', 1000],
 	['Avatar', 'Buys an custom avatar to be applied to your name (You supply. Images larger than 80x80 may not show correctly)', 2000],
 	['Arcade Driver', 'Buys Room Driver in arcade. (can be removed if you are a tool.)', 3000],
 	['Arcade Icon', 'Buy a custom icon that can be applied to the Arcade room. You must take into account that the provided image should be 32 x 32', 3000],
