@@ -25,7 +25,7 @@ function currencyName(amount) {
 	return amount === 1 ? name : name + "s";
 }
 
-/**git add config/\*.txt
+/**
  * Log money to logs/money.txt file.
  *
  * @param {String} message
@@ -103,12 +103,12 @@ exports.commands = {
                             '/roomshop bank, [username] - Sets the room bank to [username]. The room bank receives all funds from the puchases in the shop.')
         }
         var roomName = toId(room.title);
-        if (fs.existsSync('config/db/'+roomName+'shop.json')) {
-  			var shop = JSON.parse(fs.readFileSync('config/db/'+roomName+'shop.json'));
+        if (fs.existsSync('storage-files/'+roomName+'shop.json')) {
+  			var shop = JSON.parse(fs.readFileSync('storage-files/'+roomName+'shop.json'));
 		}else{
 		    var shop = JSON.parse(defaultShop);
-			fs.writeFileSync('config/db/'+roomName+'shop.json', defaultShop);
-			var shop = JSON.parse(fs.readFileSync('config/db/'+roomName+'shop.json'));
+			fs.writeFileSync('storage-files/'+roomName+'shop.json', defaultShop);
+			var shop = JSON.parse(fs.readFileSync('storage-files/'+roomName+'shop.json'));
 		}
 		if(targets[0] == 'view' || targets[0] == 'list'){
 		    var shopList = '<div><center><h2><u>'+room.title+'\'s Shop.</h2></u><br/><table cellpadding="6" border="1"><tr><td align="center"><h3><u>Item</h3></u></td><td align="center"><h3><u>Description</h3></u></td><td align="center"><h3><u>Price</h3></u></td></tr><br/>';
@@ -128,13 +128,13 @@ exports.commands = {
 		if(targets[0] == 'buy'){
 		    var item = targets[1].replace(' ','');
 		    var _this = this;
-		    Db.read('money', user.userid, function (err, amount) {
+		    Database.read('money', user.userid, function (err, amount) {
     			if (err) throw err;
     			if (!amount) amount = 0;
     			var cost = findItem.call(_this, item, amount, shop);
     			if (!cost) return room.update();
     			if(!shop.bank){
-    			    Db.write('money', amount - cost, user.userid, function (err, total) {
+    			    Database.write('money', amount - cost, user.userid, function (err, total) {
         				if (err) throw err;
         				_this.sendReply("You have bought " + item + " for " + cost +  currencyName(cost) + ". You now have " + total + currencyName(total) + " left.");
         				room.addRaw(user.name + " has bought <b>" + item + "</b> from the shop.");
@@ -148,7 +148,7 @@ exports.commands = {
         				room.update();
     			    });
     			}else{
-    			    Db.read('money', toId(shop.bank), function (err, amount) {
+    			    Database.read('money', toId(shop.bank), function (err, amount) {
         			if (err) throw err;
         			if (!amount) amount = 0;
         			var cost = findItem.call(_this, item, amount, shop);
@@ -156,12 +156,12 @@ exports.commands = {
         			//amount = isMoney(amount);
 					if(!Number(amount)) amount = 0;
         			if (!cost) return room.update();
-        			    Db.write('money', amount + cost, toId(shop.bank), function (err, total) {
+        			    Database.write('money', amount + cost, toId(shop.bank), function (err, total) {
             				if (err) throw err;
             				//_this.sendReply('Bank has been given '+cost);
     			        });
     			    });
-    			    Db.write('money', amount - cost, user.userid, function (err, total) {
+    			    Database.write('money', amount - cost, user.userid, function (err, total) {
         				if (err) throw err;
         				_this.sendReply("You have bought " + item + " for " + cost +  currencyName(cost) + ". You now have " + total + currencyName(total) + " left.");
         				room.addRaw(user.name + " has bought <b>" + item + "</b> from the shop.");
@@ -184,7 +184,7 @@ exports.commands = {
 		    var desc = targets[2].slice(1);
 		    var price = targets[3].replace(' ','');
 		    shop.itemList.push({"item":item,"desc":desc,"price":price});
-		    fs.writeFile('config/db/'+roomName+'shop.json', JSON.stringify(shop));
+		    fs.writeFile('storage-files/'+roomName+'shop.json', JSON.stringify(shop));
 		    return this.sendReply('Added new item to the shop');
 		    //return this.sendReply(item + ' ' + desc + ' ' + price);
 		}
@@ -195,7 +195,7 @@ exports.commands = {
 		    while (len--) {
 		        if (item.toLowerCase() !== shop.itemList[len].item.toLowerCase()) continue;
 		        shop.itemList.remove(shop.itemList[len]);
-		        fs.writeFile('config/db/'+roomName+'shop.json', JSON.stringify(shop));
+		        fs.writeFile('storage-files/'+roomName+'shop.json', JSON.stringify(shop));
 		        return this.sendReply('Removed '+item+' from the shop');
 		    } 
 		}
@@ -217,7 +217,7 @@ exports.commands = {
 		}
 		if(targets[0] == 'bank'){
 		    shop.bank = toId(targets[1]);
-		    fs.writeFile('config/db/'+roomName+'shop.json', JSON.stringify(shop));
+		    fs.writeFile('storage-files/'+roomName+'shop.json', JSON.stringify(shop));
 		    return this.sendReply('Room shop bank has been set to '+shop.bank);
 		}
     }
