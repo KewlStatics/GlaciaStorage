@@ -1,8 +1,12 @@
-
-
+var db = new sqlite3.Database('config/users.db', function() {
+    db.run("CREATE TABLE if not exists users (userid TEXT, name TEXT, bucks INTEGER)");
+});
+ 
 var fs = require('fs');
-var path = require('path');
-var moment = require('moment');
+var http = require('http');
+var MD5 = require('MD5');
+var shopTitle = 'Shop';
+var serverIp = '127.0.0.1';
 
 exports.commands = {
  roomshop: 'leagueshop',
