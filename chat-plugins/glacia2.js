@@ -702,9 +702,9 @@ exports.commands = {
 	},
 	badgelist: function(target, room, user) {
 		if (!this.canBroadcast()) return;
-		var fls = '<img src="http://www.smogon.com/media/forums/images/badges/forummod_alum.png" title="Former Lux Staff">';
+		var fls = '<img src="http://www.smogon.com/media/forums/images/badges/forummod_alum.png" title="Former Glacia Staff">';
 		var admin = '<img src="http://www.smogon.com/media/forums/images/badges/sop.png" title="Server Administrator">';
-		var dev = '<img src="http://www.smogon.com/media/forums/images/badges/factory_foreman.png" title="Lux Developer">';
+		var dev = '<img src="http://www.smogon.com/media/forums/images/badges/factory_foreman.png" title="Glacia Developer">';
 		var creator = '<img src="http://www.smogon.com/media/forums/images/badges/dragon.png" title="Server Creator">';
 		var comcun = '<img src="http://www.smogon.com/media/forums/images/badges/cc.png" title="Community Contributor">';
 		var leader = '<img src="http://www.smogon.com/media/forums/images/badges/aop.png" title="Server Leader">';
@@ -715,7 +715,7 @@ exports.commands = {
 		var twinner = '<img src="http://www.smogon.com/media/forums/images/badges/spl.png" title="Badge Tournament Winner">';
 		var vip = '<img src="http://www.smogon.com/media/forums/images/badges/zeph.png" title="VIP">';
 		var bot = '<img src="http://www.smogon.com/media/forums/images/badges/mind.png" title="Bot">';
-		return this.sendReplyBox('<b>List of Lux Badges</b>:<br>' + fls + '  ' + admin + '    ' + dev + '  ' + creator + '   ' + comcun + '    ' + mod + '    ' + leader + '    ' + league + '    ' + champ + '    ' + artist + '    ' + twinner + '    ' + vip + '    ' + bot + ' ');
+		return this.sendReplyBox('<b>List of Glacia Badges</b>:<br>' + fls + '  ' + admin + '    ' + dev + '  ' + creator + '   ' + comcun + '    ' + mod + '    ' + leader + '    ' + league + '    ' + champ + '    ' + artist + '    ' + twinner + '    ' + vip + '    ' + bot + ' ');
 	},
 	badges: 'badge',
 	badge: function(target, room, user) {
@@ -726,9 +726,9 @@ exports.commands = {
 		var matched = false;
 		if (!targetUser) return false;
 		var champ = '<img src="http://www.smogon.com/media/forums/images/badges/forumadmin_alum.png" title="League Champion">';
-		var fls = '<img src="http://www.smogon.com/media/forums/images/badges/forummod_alum.png" title="Former Lux Staff">';
+		var fls = '<img src="http://www.smogon.com/media/forums/images/badges/forummod_alum.png" title="Former Glacia Staff">';
 		var admin = '<img src="http://www.smogon.com/media/forums/images/badges/sop.png" title="Server Administrator">';
-		var dev = '<img src="http://www.smogon.com/media/forums/images/badges/factory_foreman.png" title="Lux Developer">';
+		var dev = '<img src="http://www.smogon.com/media/forums/images/badges/factory_foreman.png" title="Glacia Developer">';
 		var creator = '<img src="http://www.smogon.com/media/forums/images/badges/dragon.png" title="Server Creator">';
 		var comcun = '<img src="http://www.smogon.com/media/forums/images/badges/cc.png" title="Community Contributor">';
 		var leader = '<img src="http://www.smogon.com/media/forums/images/badges/aop.png" title="Server Leader">';
