@@ -325,7 +325,7 @@ exports.commands = {
 	searchcards: function (target, room, user) {
 		if (!this.canBroadcast()) return;
 		if (!target) return this.errorReply('you need a search term');
-		if (target === "ALL" && user.name === 'lmaoitsbt') {
+		if (target === "ALL" && user.name === 'kokonoesan') {
 			for (var x = 0; x < 888; x++) {
 				this.parse('/card ' + allCards[x]);
 			}
