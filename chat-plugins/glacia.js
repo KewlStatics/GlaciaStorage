@@ -311,27 +311,6 @@ exports.commands = {
 		targetUser.namelock = false;
 		return this.sendReply("The user " + targetUser + " is now un-namelocked.");
 	},
-	pet: function(target, room, user) {
-		if (!target) return this.sendReply('/pet needs a target.');
-		return this.parse('/me pets ' + target + ' lavishly.');
-	},
-	dk: 'dropkick',
-	dropkick: function(target, room, user) {
-		if (!target) return this.sendReply('/dropkick needs a target.');
-		return this.parse('/me dropkicks ' + target + ' across the PokÃƒÂ©mon Stadium!');
-	},
-	halloween: function(target, room, user) {
-		if (!target) return this.sendReply('/halloween needs a target.');
-		return this.parse('/me takes ' + target + '`s pumpkin and smashes it all over the PokÃƒÂ©mon Stadium!');
-	},
-	barn: function(target, room, user) {
-		if (!target) return this.sendReply('/barn needs a target.');
-		return this.parse('/me has barned ' + target + ' from the entire server!');
-	},
-	lick: function(target, room, user) {
-		if (!target) return this.sendReply('/lick needs a target.');
-		return this.parse('/me licks ' + target + ' excessively!');
-    	},
 	gdeclarered: 'gdeclare',
 	gdeclaregreen: 'gdeclare',
 	gdeclare: function(target, room, user, connection, cmd) {
