@@ -301,11 +301,11 @@ exports.commands = {
 
 	},
 	tourpoll: function(target, room, user) {
-		var tiers = ['Balanced Hackmons', 'Battle Factory', 'CC 1V1', 'Mix and Mega', 'Monotype', 'OU', 'Random Battles', 'UU'];
+		var tiers = ['Battle Factory', 'Challenge Cup 1V1', 'Doubles OU', '[Gen 1] Random Battle', 'Monotype', 'OU', 'RU', 'UU'];
 		this.parse('/poll new Next Tournament?, ' + tiers);
      	},
         leaguepoll: function(target, room, user) {
-		var tiers = ['Monotype', 'Challenge Cup 1v1', 'Eights'];
+		var tiers = ['Monotype', 'Challenge Cup 1v1', '8's];
 		this.parse('/poll new League tournament?, ' + tiers);
 	},
 
