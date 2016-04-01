@@ -305,7 +305,7 @@ exports.commands = {
 		this.parse('/poll new Next Tournament?, ' + tiers);
      	},
         leaguepoll: function(target, room, user) {
-		var tiers = ['Monotype', 'Challenge Cup 1v1', '8's];
+		var tiers = ['Monotype', 'Challenge Cup 1v1', '8s'];
 		this.parse('/poll new League tournament?, ' + tiers);
 	},
 
