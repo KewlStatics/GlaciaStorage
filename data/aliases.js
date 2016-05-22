@@ -19,7 +19,7 @@ exports.BattleAliases = {
 	"vgc": "VGC 2016",
 	"bsdoubles": "Battle Spot Doubles",
 	"bstriples": "Battle Spot Triples",
-	"seasonal": "[Seasonal] Polar Opposites",
+	"seasonal": "[Seasonal] Super Staff Bros. Melee",
 	"createapokemon": "CAP",
 	"2v2": "2v2 Doubles",
 	"cc1v1": "Challenge Cup 1v1",
@@ -72,6 +72,8 @@ exports.BattleAliases = {
 	"mmx": "Mewtwo-Mega-X",
 	"mmy": "Mewtwo-Mega-Y",
 	"mray": "Rayquaza-Mega",
+	"zardx": "Charizard-Mega-X",
+	"zardy": "Charizard-Mega-y",
 
 	// primal reversions
 	"primaldon": "Groudon-Primal",
@@ -187,10 +189,49 @@ exports.BattleAliases = {
 	"meowsticmale": "Meowstic",
 
 	// cosmetic formes
+	"shelloseast": "Shellos",
+	"shelloswest": "Shellos",
 	"gastrodone": "Gastrodon",
 	"gastrodoneast": "Gastrodon",
 	"gastrodonw": "Gastrodon",
 	"gastrodonwest": "Gastrodon",
+	"deerlingspring": "Deerling",
+	"deerlingsummer": "Deerling",
+	"deerlingautumn": "Deerling",
+	"deerlingwinter": "Deerling",
+	"sawsbuckspring": "Sawsbuck",
+	"sawsbucksummer": "Sawsbuck",
+	"sawsbuckautumn": "Sawsbuck",
+	"sawsbuckwinter": "Sawsbuck",
+	"vivillonarchipelago": "Vivillon",
+	"vivilloncontinental": "Vivillon",
+	"vivillonelegant": "Vivillon",
+	"vivillongarden": "Vivillon",
+	"vivillonhighplains": "Vivillon",
+	"vivillonicysnow": "Vivillon",
+	"vivillonjungle": "Vivillon",
+	"vivillonmarine": "Vivillon",
+	"vivillonmodern": "Vivillon",
+	"vivillonmonsoon": "Vivillon",
+	"vivillonocean": "Vivillon",
+	"vivillonpolar": "Vivillon",
+	"vivillonriver": "Vivillon",
+	"vivillonsandstorm": "Vivillon",
+	"vivillonsavanna": "Vivillon",
+	"vivillonsun": "Vivillon",
+	"vivillontundra": "Vivillon",
+	"flabebeblue": "Flabebe",
+	"flabebeorange": "Flabebe",
+	"flabebewhite": "Flabebe",
+	"flabebeyellow": "Flabebe",
+	"floetteblue": "Floette",
+	"floetteorange": "Floette",
+	"floettewhite": "Floette",
+	"floetteyellow": "Floette",
+	"florgesblue": "Florges",
+	"florgesorange": "Florges",
+	"florgeswhite": "Florges",
+	"florgesyellow": "Florges",
 
 	// items
 	"assvest": "Assault Vest",
@@ -373,3 +414,4 @@ exports.BattleAliases = {
 	// there's no need to type out the other Japanese names
 	// I'll autogenerate them at some point
 };
+
