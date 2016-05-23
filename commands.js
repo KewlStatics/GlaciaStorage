@@ -57,7 +57,10 @@ exports.commands = {
 		if (!buffer.length) buffer = "This server has no global authority.";
 		connection.popup(buffer.join("\n\n"));
 	},
-
+	authhelp: ["/auth - Show global staff for the server.",
+		"/auth [room] - Show what roomauth a room has.",
+		"/auth [user] - Show what global and roomauth a user has."],
+		
 	me: function (target, room, user, connection) {
 		// By default, /me allows a blank message
 		if (target) target = this.canTalk(target);
